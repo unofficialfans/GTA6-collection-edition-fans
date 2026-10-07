@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTA VI Fan Collector's Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(180deg, #8A1572 0%, #4E4195 50%, #0099DD 100%);
+            background-attachment: fixed;
+            font-family: 'Outfit', sans-serif;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            overflow-x: hidden;
+            padding: 40px 20px;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: clamp(2.5rem, 6vw, 5.5rem);
+            line-height: 1.1;
+            text-transform: uppercase;
+            color: #ffffff;
+            text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.8),
+                0 0 20px rgba(255, 0, 128, 0.8),
+                0 0 35px rgba(255, 0, 128, 0.6),
+                0 0 50px rgba(255, 0, 128, 0.4);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle-cyan {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: clamp(2rem, 5vw, 4.5rem);
+            text-transform: uppercase;
+            color: #00ffff;
+            text-shadow: 
+                0 0 10px rgba(0, 255, 255, 0.9),
+                0 0 20px rgba(0, 255, 255, 0.7),
+                0 0 35px rgba(0, 153, 221, 0.6);
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .edition-badge {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: clamp(1.8rem, 4vw, 3.5rem);
+            text-transform: uppercase;
+            color: #ffaa00;
+            text-shadow: 
+                0 0 10px rgba(255, 170, 0, 0.9),
+                0 0 20px rgba(255, 100, 0, 0.8),
+                0 0 30px rgba(255, 50, 0, 0.6);
+            margin-bottom: 50px;
+            letter-spacing: 3px;
+        }
+
+        .btn-preview {
+            background: transparent;
+            border: 3px solid #ff007f;
+            color: #ffffff;
+            padding: 18px 40px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            text-transform: uppercase;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 
+                0 0 15px rgba(255, 0, 127, 0.5),
+                inset 0 0 15px rgba(255, 0, 127, 0.3);
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            margin-bottom: 40px;
+        }
+
+        .btn-preview:hover {
+            background: #ff007f;
+            box-shadow: 
+                0 0 25px rgba(255, 0, 127, 0.9),
+                0 0 40px rgba(255, 0, 127, 0.7);
+            transform: scale(1.05);
+        }
+
+        /* Detail Page Styling */
+        .detail-view {
+            display: none;
+            text-align: center;
+            max-width: 1100px;
+            width: 100%;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .detail-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: clamp(1.8rem, 3.8vw, 3.2rem);
+            line-height: 1.2;
+            text-transform: uppercase;
+            color: #ffffff;
+            text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.8),
+                0 0 20px rgba(255, 0, 128, 0.8),
+                0 0 35px rgba(255, 0, 128, 0.6);
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .detail-intro-text {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 400;
+            font-size: clamp(1rem, 2vw, 1.35rem);
+            line-height: 1.7;
+            color: #e0f7ff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+            background: rgba(0, 0, 0, 0.35);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 153, 221, 0.3);
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        /* Image + Text Grid Layout */
+        .content-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+            margin-bottom: 40px;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .content-row {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .content-img img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 
+                0 0 15px rgba(0, 0, 0, 0.5),
+                0 0 25px rgba(255, 0, 127, 0.3);
+            border: 2px solid rgba(255, 0, 127, 0.4);
+        }
+
+        .content-text {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 400;
+            font-size: clamp(1rem, 1.8vw, 1.25rem);
+            line-height: 1.6;
+            color: #ffffff;
+            text-align: left;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+        }
+        
+        .content-text strong {
+            color: #ffaa00;
+            font-size: 1.2em;
+            text-shadow: 0 0 10px rgba(255, 170, 0, 0.6);
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .content-text .inline-bold {
+            display: inline;
+            color: #00ffff;
+            font-size: 1em;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+            margin-bottom: 0;
+        }
+        
+        .content-text ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 15px;
+        }
+
+        .content-text ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .content-text ul li::before {
+            content: "•";
+            color: #00ffff;
+            font-size: 1.5em;
+            position: absolute;
+            left: 0;
+            top: -5px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .content-text {
+                text-align: center;
+            }
+            .content-text ul li {
+                padding-left: 0;
+            }
+            .content-text ul li::before {
+                display: none;
+            }
+        }
+
+        .detail-footer-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+            text-transform: uppercase;
+            color: #ffaa00;
+            text-shadow: 
+                0 0 10px rgba(255, 170, 0, 0.9),
+                0 0 20px rgba(255, 100, 0, 0.8);
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        /* Perfect Side-by-Side Comparison Container */
+        .comparison-container {
+            width: 100%;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .comparison-header-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            position: sticky;
+            top: 10px;
+            z-index: 20;
+            background: rgba(15, 10, 30, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 15px 10px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .edition-original-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+            text-transform: uppercase;
+            color: #00f0ff;
+            text-shadow: 0 0 12px rgba(0, 240, 255, 0.8);
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .edition-fans-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+            text-transform: uppercase;
+            color: #ff007f;
+            text-shadow: 0 0 12px rgba(255, 0, 127, 0.8);
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .comp-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .comp-card {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.35);
+            padding: 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .original-card {
+            border-color: rgba(0, 240, 255, 0.3);
+        }
+
+        .original-card img {
+            width: 100%;
+            height: 320px;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 
+                0 0 15px rgba(0, 0, 0, 0.5),
+                0 0 20px rgba(0, 240, 255, 0.25);
+            border: 2px solid rgba(0, 240, 255, 0.4);
+            background: rgba(0, 0, 0, 0.4);
+            display: block;
+        }
+
+        .fans-card {
+            border-color: rgba(255, 0, 127, 0.3);
+        }
+
+        .fans-card img {
+            width: 100%;
+            height: 320px;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 
+                0 0 15px rgba(0, 0, 0, 0.5),
+                0 0 20px rgba(255, 0, 127, 0.3);
+            border: 2px solid rgba(255, 0, 127, 0.5);
+            background: rgba(0, 0, 0, 0.4);
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-header-row {
+                position: relative;
+                top: 0;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                padding: 10px 5px;
+            }
+            .comp-row {
+                gap: 10px;
+            }
+            .comp-card {
+                padding: 8px;
+                border-radius: 12px;
+            }
+            .original-card img, .fans-card img {
+                height: 180px;
+            }
+        }
+
+        .btn-back {
+            background: transparent;
+            border: 3px solid #00ffff;
+            color: #ffffff;
+            padding: 15px 35px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+
+        .btn-back:hover {
+            background: #00ffff;
+            color: #000000;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.9);
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 10px 25px;
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 8px;
+        }
+
+        .lang-btn:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        .lang-btn.active {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 10px #ff007f;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Red Warning Banner & Warning text styling */
+        .project-warning {
+            margin-top: 25px;
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(139, 0, 0, 0.35);
+            border: 2px solid #ff3333;
+            color: #ffffff;
+            padding: 15px 25px;
+            border-radius: 12px;
+            text-align: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+            letter-spacing: 0.5px;
+        }
+
+        .warning-red {
+            color: #ff3333;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Home / Main View -->
+        <div id="homeView">
+            <h1 data-key="mainTitle">Grand Theft Auto VI:<br>The Goodtime State</h1>
+            <div class="subtitle-cyan" data-key="mainSubtitle">Vice City Collection</div>
+            <div class="edition-badge" data-key="editionBadge">EDICE FANOUŠKOVSKÁ</div>
+            <button class="btn-preview" id="previewBtn" onclick="showDetail()" data-key="previewBtn">NÁHLED FANOUŠKOVSKÉ EDICE</button>
+        </div>
+
+        <!-- Detail View -->
+        <div id="detailView" class="detail-view">
+            <div class="detail-title" data-key="detailTitle">
+                <span>Grand Theft Auto VI: The Goodtime State – Vice City Collection</span> <span>EDICE FANOUŠKOVSKÁ</span>
+            </div>
+            
+            <div class="detail-intro-text" id="detailIntroText" data-key="detailIntro">
+                🔥 GTA VI The Goodtime State – Vice City Collection (UNOFFICIAL FAN EDITION)<br><br>
+                Když Rockstar selže, fanoušci si musí vzít sběratelskou edici do vlastních rukou!<br><br>
+                Slyšeli jste to ticho po oznámení oficiálního 400dolarového boxu od Rockstaru? To byl jen zvuk padajících nadějí milionů fanoušků. Dát devět tisíc korun za plastového aligátora, zrcátko a ledvinku přes rameno bez samotné hry? Díky, ale ne.<br><br>
+                Ukazujeme Rockstaru, jak má vypadat POCTIVÁ sběratelská edice, za kterou by každý hráč bez váhání utratil své úspory. Žádný předražený marketingový odpad – jen čistá vášeň, reálná užitná hodnota a neskutečný styl Vice City!
+            </div>
+
+            <div class="detail-footer-title" id="footerTitle" data-key="footerTitle">SBĚRATELSKÁ EDICE OD FANOUŠKŮ</div>
+
+            <!-- Content Row 1 (Closed Box) -->
+            <div class="content-row">
+                <div class="content-img">
+                    <img src="https://i.postimg.cc/DZ4sycxr/GTA-6-Collection-edice-fans-(zavreny-box).jpg" alt="GTA 6 Fan Collector's Edition Closed Box">
+                </div>
+                <div class="content-text" data-key="boxClosed">
+                    <strong>SBĚRATELSKÝ BOX ZAVŘENÝ</strong>
+                    <span>Dámy a pánové, připoutejte se. Před vámi neleží obyčejná krabice. Tohle je Grand Theft Auto VI: The Goodtime State – Vice City Collection – svatý grál všech vyvrhelů, svatyně hříchu a lístek do kriminálního pekla s neonovým pozlátkem! Pojďme se podívat, co se skrývá pod tímhle zapečetěným víkem, které doslova pulzuje sluncem pláží a zkorumpovaných policejních majáků.</span>
+                </div>
+            </div>
+
+            <!-- Content Row 2 (Opened Box) -->
+            <div class="content-row">
+                <div class="content-img">
+                    <img src="https://i.postimg.cc/HkS7wNKm/GTA-6-Collection-edice-fans-(otevreny-box).jpg" alt="GTA 6 Fan Collector's Edition Opened Box">
+                </div>
+                <div class="content-text" data-key="boxOpened">
+                    <strong>SBĚRATELSKÝ BOX OTEVŘENÝ</strong>
+                    <span>Otevřela se Pandořina skříňka a voní po kokosu, neonu a po střelném prachu! Ne, tohle není jen sběratelská krabice, to je oltář pro vaše nejtemnější a nejluxusnější kriminální touhy. Když odklopíte to černé monstrózní víko, uvidíte grafiku, co připomíná billboard pro Město neřesti. Obří sprejovaný nápis Greetings from Vice City na vás řve v retro-graffiti stylu. Stupňovitým designem vnitřek připomíná schody k absolutní kriminální moci, kde schováváte svoje nelegální hračky.</span>
+                </div>
+            </div>
+
+            <!-- Content Row 3 (Jason & Lucia Statue) -->
+            <div class="content-row">
+                <div class="content-img">
+                    <img src="https://i.postimg.cc/3wXQ5MTC/GTA-6-Collection-edice-fans-(figurka-Jason-a-Lucie).jpg" alt="GTA 6 Fan Collector's Edition Jason and Lucia Statue">
+                </div>
+                <div class="content-text" data-key="statue">
+                    <strong>Soška JASON a LUCIE (30 cm)</strong>
+                    <span>Skutečný středobod celé kolekce, na který oficiální verze „pro jistotu“ úplně zapomněla. Detailní pár hrdinů připravených dobýt Leonidu na stojánku s neonovým logem VICE CITY, kde LUCIE drží záhadný kufřík od krve. Co je v kufříku? Diamanty? Možná tajné dokumenty od Rockstaru? Možná drogy? To nikdo neví, jenom Jason a Lucie.</span>
+                </div>
+            </div>
+
+            <!-- Content Row 4 (Oakley Glasses) -->
+            <div class="content-row">
+                <div class="content-img">
+                    <img src="https://i.postimg.cc/wjBkYDY1/GTA-6-Collection-edice-fans-(bryle).jpg" alt="GTA 6 Fan Collector's Edition Oakley Glasses">
+                </div>
+                <div class="content-text" data-key="glasses">
+                    <strong>Sluneční brýle OAKLEY Wayfarer</strong>
+                    <span>Tvar brýlí je Wayfarer, klasika, ale s takovou aurou moci, že by i James Bond vypadal vedle nich jako nudný úředník. A ty čočky! Zrcadlová tyrkysová! To není jen barva, to je výkřik. Jsou to oči hada, který vidí jen kořist. Odráží svět tak, že vypadá jako v roce 1986, i když je rok 2026.<br><br>Ale to není vše! Z boku, na postranici, nápis OAKLEY křičí v té samé neonově růžové barvě, která existuje jen ve 3 hodiny ráno v nočním klubu. Když si tyhle brýle nasadíte, transformace je okamžitá a nevratná. Vaše oči už nevidí. Ony zrcadlí. Získáte okamžitou znalost toho, jak pilotovat hydroplán pod mostem. Víte, jak míchat dokonalé mojito. Cítíte nutkání nosit hedvábná saka a zlaté řetězy. A co je nejdůležitější, policejní majáčky se stanou jen dalším estetickým prvkem ve vaší neonové realitě.<br><br>Jsou to brýle pro ty, kteří se nebojí tmy... i když je venku jasno. Jsou to OAKLEY, a přicházejí s <span class="warning-red">VAROVÁNÍM</span>: nošení může způsobit vážnou touhu po moci a diskotékách.</span>
+                </div>
+            </div>
+
+            <!-- Content Row 5 (Tommy Vercetti Shirt) -->
+            <div class="content-row">
+                <div class="content-img">
+                    <img src="https://i.postimg.cc/pVGfYpFX/GTA-6-Collection-edice-fans-(kosile-tommy-vercetti).jpg" alt="GTA 6 Fan Collector's Edition Tommy Vercetti Shirt">
+                </div>
+                <div class="content-text" data-key="shirt">
+                    <strong>Havajská košile Tommyho Vercettiho</strong>
+                    <span>Dámy a pánové, pohleďte. Tohle není obyčejný kus textilu z výprodeje v nákupním centru. Tohle je posvátná kriminální monarchie. Legendární havajská košile samotného Tommyho Vercettiho! Podívejte se na tu barvu! Elektrizující, nekompromisní tyrkysová modř a elegantní siluety palem – tichá připomínka toho, že pod tímto tropickým rájem leží nebezpečná džungle, kde přežívají jen ti nejrychlejší a nejdrzejší.<br><br>Tato košile má své vlastní nepsané zákony:</span>
+                    <ul>
+                        <li><strong class="inline-bold">Pravidlo tří knoflíků:</strong> <span>Rozepnout minimálně do poloviny hrudníku! Pokud není vidět zlatý řetěz a hrudník vystavený tropickému vánku, nosíte ji absolutně špatně.</span></li>
+                        <li><strong class="inline-bold">Rukávy v pohotovosti:</strong> <span>Tyhle krátké rukávy tu nejsou pro pohodlí. Jsou navrženy tak, aby vám nic nebránilo v divoké střelbě z okna kradeného Ferrari, zatímco vám v patách visí půlka policejního sboru Vice City.</span></li>
+                        <li><strong class="inline-bold">Materiál stvořený pro chaos:</strong> <span>Látka je tak lehká, že v ní přežijete i vražedné floridské horko, ale zároveň dostatečně odolná, aby z ní šly snadno vyprat skvrny od rozlité Piña Colady... nebo něčeho ještě nebezpečnějšího.</span></li>
+                    </ul>
+                    <strong class="inline-bold">Efekt po obléknutí:</strong> <span>Jakmile si ji obléknete, vaší DNA projde okamžitá transformace. Váš postoj ztvrdne, váš hlas klesne o dvě oktávy, v kapse se vám zničehonic objeví klíčky od červeného kabrioletu a na tváři se usadí výraz člověka, který právě koupil půlku města a druhou půlku přinutil platit za ochranu.</span><br><br>
+                    <span>To není jen oblečení. To je brnění krále podsvětí. Nosíte ho s vědomím, že slunce ve Vice City nikdy nezapadá bez pořádné dávky dramatu!</span>
+                </div>
+            </div>
+
+            <!-- Content Row 6 (Pink Alligator Cap) -->
+            <div class="content-row">
+                <div class="content-img">
+                    <img src="https://i.postimg.cc/bwNZvjgQ/GTA-6-Collection-edice-fans-(ksiltovka).jpg" alt="GTA 6 Fan Collector's Edition Vice City Cap">
+                </div>
+                <div class="content-text" data-key="cap">
+                    <strong>Kšiltovka: Model "Vice City Leonida: Party-Aligátor"</strong>
+                    <span>Svatý grál neonové kriminální říše! Růžový aligátor. V džínsové bundě. Ve slunečních brýlích. A s červeným koktejlem! Pije, zatímco svět kolem něj se noří do chaosu. Nad ním nápis VICE CITY... nápis tak ikonický, že by mohl být vytesán do kamene na pláži Ocean Beach. A pod ním Leonida... název státu, který se stane vaším osobním hřištěm. Neony a pláže, zločin a koktejly – to vše je zapsáno do tohoto jediného grafického celku.<br><br>A ten kšilt! Růžový! Jako barva, kterou si musíte dát na oči, abyste viděli, že svět je hezčí. A na něm? Sbírka „medailí“ za kriminální zásluhy! Slunce v brýlích? Protože i slunce ve Vice City musí mít styl. A pak bílé nenápadné letadlo... co asi převáží? Hmm. Ikonická značka GTA VI. A na boku? Ten tichý, růžový, vražedný nápis 'R★'.<br><br>Nosit tuto kšiltovku není volba, je to poslání. Volá vás, abyste si vyhrnuli rukávy na saku, zapnuli diskotékovou hudbu a vyjeli vstříc západu slunce... v kradeném sporťáku. Tohle je vaše nová koruna!</span>
+                </div>
+            </div>
+
+            <!-- Content Row 7 (Vinyl Album) -->
+            <div class="content-row">
+                <div class="content-img">
+                    <img src="https://i.postimg.cc/YqS4rHb0/GTA-6-Collection-edice-fans-(vinylove-album).jpg" alt="GTA 6 Fan Collector's Edition Vinyl Album">
+                </div>
+                <div class="content-text" data-key="vinyl">
+                    <strong>VINYLOVÉ ALBUM "Grand Theft Auto VI"</strong>
+                    <span>Tohle je vinylové album, co pálí zorničky!<br><br></span>
+                    <strong class="inline-bold">Plocha obalu (Gatefold):</strong> <span>Bleskový neonový nápis VI: The Album vyřezaný přímo do fialové noci s palmami! A co je vedle? Aligátor pohodlně usazený v nafukovacím kruhu přímo v obřím martini skle! Je to šílené? Ano! Je to stylové? Absolutně! Je to přesně to, co od Vice City chceme.</span><br><br>
+                    <strong class="inline-bold">Vnitřní artový památník:</strong> <span>V rozkládacím obalu nás čeká nádherná atmosféra s našimi hrdiny u postříleného červeného auta při západu slunce. A vedle toho samostatný art print s metalicky růžovým nafukovacím plameňákem ve slunečních brýlích! Detail, styl, duše – věci, které přesně chceme.</span><br><br>
+                    <strong class="inline-bold">A teď to hlavní – TY VINYLY!:</strong> <span>Tady je máme: litý, abstraktní-stříkaný vinyl v kombinaci elektrizující fialové, růžové a nebezpečné modré! Tyhle desky vypadají tak zatraceně dobře, že je ani nechcete položit na gramofon, ale rovnou si je přimontovat na zeď jako umělecký artefakt. Tohle není jen vinyl, tohle je umělecké dílo!</span>
+                </div>
+            </div>
+
+            <!-- Content Row 8 (Cocktail Glass) -->
+            <div class="content-row">
+                <div class="content-img">
+                    <img src="https://i.postimg.cc/wjpD9Pyw/GTA-6-Collection-edice-fans-(koktejlova-sklenice).jpg" alt="GTA 6 Fan Collector's Edition Cocktail Glass">
+                </div>
+                <div class="content-text" data-key="glass">
+                    <strong>Koktejlová sklenice 'Vice City: Leonida'</strong>
+                    <span>Představujeme vám naši fanouškovskou edici koktejlové sklenice, která je vizuálním útokem na vaše korporátní oči. Zapomeňte na sterilní čistotu a obyčejné panákovky – tohle je sklo, které má duši.<br><br>Srdcem tohoto mistrovského díla je skutečný král Neonového Pobřeží: neonově růžový aligátor. Je to symbol divoké energie a nezdolného ducha. Naše logo „Vice City: Leonida“ je vytesáno s větším odhodláním než jakýkoli korporátní asset.<br><br>A podívejte se na ten gradient! Plynulý přechod od elektricky růžové po hlubokou, oceánskou fialovou. To není jen barva – to je životní styl, který prostě nedokážete zachytit. Naše fialová nožka je elegantnější, naše růžová jasnější a naše modrá zářivější než cokoli, co by kdy mohl někdo velkovýrobně vytvořit.<br><br>A ten deštníček? To není jen dekorace; je to tyrkysově modré prohlášení, které křičí: <em>„My máme styl, který vám chybí.“</em> Vše navrženo tak, abychom si drink po úspěšné loupeži vychutnali se vším všudy.</span>
+                </div>
+            </div>
+
+            <!-- Content Row 9 (Cocktail Spoon) -->
+            <div class="content-row">
+                <div class="content-img">
+                    <img src="https://i.postimg.cc/0QRzCKYd/GTA-6-Collection-edice-fans-(koktejlova-lzicka).jpg" alt="GTA 6 Fan Collector's Edition Cocktail Spoon">
+                </div>
+                <div class="content-text" data-key="spoon">
+                    <strong>Barová lžička 'Vice City Reborn'</strong>
+                    <span>Tohle je Vice City znovuzrozené a vylepšené. Naše barová lžička, vytesaná z ryzího, tekutého neonového stříbra, není jen kovový prut; je to kroucená DNA rebelie, která vede ruku skutečného míchacího mistra.<br><br>Vzali jsme tu obyčejnou lžičku od Rockstaru a vdechli jí skutečný život Vice City. Každý detail křičí luxusem, nebezpečím a stylem 80. let. Tohle není nástroj na míchání drinků, to je zbraň hromadného svádění, kterou držíš v ruce. Zmrzlinový pohár nebo drahý koktejl? S tímhle kouskem je to úplně jedno, protože ty jsi král baru.<br><br>Zapomeň na nudu, tohle je čistý, nefalšovaný adrenalin v drahém kovu. A uprostřed lžičky? Ikonický růžový stylový nápis <strong>VICE CITY</strong>. Oficiální originál vedle ní vypadá jako laciná hračka z pouti.</span>
+                </div>
+            </div>
+
+            <!-- Content Row 10 (PS5 Controller) -->
+            <div class="content-row">
+                <div class="content-img">
+                    <img src="https://i.postimg.cc/4NBwFsF6/GTA-6-Collection-edice-fans-(playstation-5-ovladac).jpg" alt="GTA 6 Fan Collector's Edition PS5 Controller">
+                </div>
+                <div class="content-text" data-key="controller">
+                    <strong>Ovladač PlayStation 5: Grand Theft Auto VI Limited Edition</strong>
+                    <span>Tento ovladač není jen kus hardwaru, je to prodloužená ruka samotného města hříchu:<br><br></span>
+                    <ul>
+                        <li><strong class="inline-bold">Chameleoní kůže noci:</strong> <span>Tělo ovladače není jen plast. Je to metalický přechod, který se přelévá z elektrické, neonově modré uprostřed do hluboké, hříšné, noční fialové na rukojetích. Je to barva, kterou vidíte, když se řítíte po Ocean Drive ve 200 km/h a neonové nápisy klubů se slévají do jedné šmouhy.</span></li>
+                        <li><strong class="inline-bold">Vryto do DNA:</strong> <span>Černý horní kryt není prázdný. Je pokryt jemnými, agresivními rytinami palem a divokých vzorů, které do plastu vryla sama atmosféra Vice City. Cítíte tu strukturu? To je textura moci.</span></li>
+                        <li><strong class="inline-bold">Neonové srdce:</strong> <span>Tlačítka? Zapomeňte na šedé symboly. Tady žhnou neonově růžovou barvou, která pulzuje energií. D-pad, geometrické tvary i PS tlačítko uprostřed – všechno to září jako vstupní brána do pekla... nebo do ráje, záleží na tom, na které straně zákona stojíte.</span></li>
+                        <li><strong class="inline-bold">Touchpad s poselstvím:</strong> <span>A uprostřed, na matně černém touchpadu, se tyčí On. Čistý, elegantní, mírně vyražený znak „VI“ s palmami uvnitř.</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Content Row 11 (Controller Stand) -->
+            <div class="content-row">
+                <div class="content-img">
+                    <img src="https://i.postimg.cc/X7Km57ky/GTA-6-Collection-edice-fans-(stojan-na-ovladac).jpg" alt="GTA 6 Fan Collector's Edition Controller Stand">
+                </div>
+                <div class="content-text" data-key="stand">
+                    <strong>Stojan na ovladač</strong>
+                    <span>Zapomeňte na líný oficiální merch a pohleďte na to, jak se to dělá, když se do práce pustí opravdoví fanoušci, kterým už došla trpělivost s korporátní chamtivostí Rockstar Games! Tohle není jen tak nějaký držák. Toto je fanouškovská sběratelská edice stojanu na ovladač, která svým zpracováním, dravostí a detaily posílá předražené a odfláknuté nápady od Rockstaru přímo do propadliště dějin.</span><br><br>
+                    <ul>
+                        <li><strong class="inline-bold">Masivní, 3D svatyně „VI“ (která neničí vaše úspory):</strong> <span>Dominantou celého stojanu je obří, vrstvené 3D logo, kterému vládne kolosální římská číslice VI. Na rozdíl od Rockstaru, který by vám podstrčil jen samé nesmyslné laciné ozdoby, je tento monument udělán s neskutečným smyslem pro detail. Přechod barev na číslici – od sytě oranžové přes neonově růžovou až po azurově modrou – dokonale zachycuje atmosféru neony zalitého sluncem Vice City. Přes to všechno se drze a sebevědomě tyčí ikonický nápis Grand Theft Auto.</span></li>
+                        <li><strong class="inline-bold">Detaily, které Rockstaru chybí – Živé palmy:</strong> <span>Po stranách, těsně za místem, kde odpočívá ovladač, raší sytě zelené, detailně tvarované palmy, které stojanu dodávají ten správný floridský, gangsterský šmrnc. Fanoušci zkrátka vědí, že na detailech záleží.</span></li>
+                        <li><strong class="inline-bold">Šestihvězdičková základna pro elitní hráče:</strong> <span>Celá tahle nádhera stojí na robustním, matně černém podstavci, který bez problémů unese tíhu vašeho herního náčiní i nekonečného čekání na release. V jeho čele trůní absolutní klenot – ostře růžový štítek s nápisem WANTED GAMERTAG a šesti žlutými hvězdami hledanosti. Jak ikonické pro hru GTA! Stojan na ovladač není jen design, to je výzva! Na rozdíl od Rockstaru, který své fanoušky ignoruje, tenhle stojan na ovladač dává hrdě najevo, že vy jste v této hře ta hlavní hvězda.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Content Row 12 (Pin Set) -->
+            <div class="content-row">
+                <div class="content-img">
+                    <img src="https://i.postimg.cc/rygY71DY/GTA-6-Collection-edice-fans-(pinovy-set).jpg" alt="GTA 6 Fan Collector's Edition Pin Set">
+                </div>
+                <div class="content-text" data-key="pins">
+                    <strong>PINOVÝ SET</strong>
+                    <span>Sedm masivních, luxusních pinů, které jsou čistým uměním. Všechny ikonické prvky z krytu jsou zde zhmotněny do podoby, kterou si můžete připnout:<br><br></span>
+                    <ul>
+                        <li><strong class="inline-bold">Růžový aligátor:</strong> <span>Křižák Leonidy v havajské košili, který popíjí koktejl a dává jasně najevo, kdo je tu pánem (a kdo má nejlepší styl).</span></li>
+                        <li><strong class="inline-bold">Nejslunnější Slunce:</strong> <span>Nosí sluneční brýle a směje se vám do tváře, protože tady je léto 365 dní v roce.</span></li>
+                        <li><strong class="inline-bold">Ikonické letadlo:</strong> <span>Prolétá nad panoramatem města, symbolizuje neomezenou svobodu a shazuje zásoby bílého štěstí.</span></li>
+                        <li><strong class="inline-bold">Klasický Lowrider:</strong> <span>Fialový 'Impalas', který se líně prohání po ulicích.</span></li>
+                        <li><strong class="inline-bold">Full-body Retro-Dandy:</strong> <span>S potetovaným tělem, zlatým řetězem a modrým kloboukem, který je sám o sobě pop-artovou ikonou.</span></li>
+                        <li><strong class="inline-bold">Plameňák:</strong> <span>Který si stahuje brýle, aby viděl ty hezké plameňáčí samice.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Content Row 13 (Fashion Magazine) -->
+            <div class="content-row">
+                <div class="content-img">
+                    <img src="https://i.postimg.cc/sfcD8N9R/GTA-6-Collection-edice-fans-(magazine-gta-6).jpg" alt="GTA 6 Fan Collector's Edition Magazine">
+                </div>
+                <div class="content-text" data-key="magazine">
+                    <strong>Módní časopis 'New Idols – GTAVI'</strong>
+                    <span>Tohle není jen herní časopis. Tohle je čistý, neředěný luxus:<br><br></span>
+                    <ul>
+                        <li><strong class="inline-bold">Pár, který vládne ulicím i přehlídkovým molům:</strong> <span>Uprostřed trůní Lucia Caminos a Jason Duval. Jason v tmavé havajské košili se stříbrným řetízkem stojí pevně v pozadí a majetnicky objímá Lucii. A Lucia? Ta definuje styl. Bílý bezrukávový rolák, vínové kalhoty, temné sluneční brýle, zlaté doplňky. Vypadá jako šéfka kriminálního syndikátu, která si zrovna odskočila z titulky Vogue.</span></li>
+                        <li><strong class="inline-bold">Titulek, co mluví za vše:</strong> <span>Výstižný nápis „New Idols – GTAVI“ dává nekompromisně najevo, kdo jsou noví vládci popkultury.</span></li>
+                        <li><strong class="inline-bold">Kulisy hříšného ráje:</strong> <span>V pozadí dýchá noční Vice City v odstínech purpury a fialové, protkané siluetami palem a zářícími neony.</span></li>
+                        <li><strong class="inline-bold">Punc exkluzivity:</strong> <span>Spodní lišta našlapaná zvučnými jmény a značkami jako Comme des Garçons spolu s čárovým kódem dotváří iluzi, že držíte v rukou sběratelský časopis z nejluxusnějšího butiku v Miami.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Content Row 14 (Leonida Map Poster) -->
+            <div class="content-row">
+                <div class="content-img">
+                    <img src="https://i.postimg.cc/7hgBszJm/GTA-6-Collection-edice-fans-(plakat-s-mapou-Leonidy).jpg" alt="GTA 6 Fan Collector's Edition Leonida Map Poster">
+                </div>
+                <div class="content-text" data-key="mapPoster">
+                    <strong>Plakát s mapou Leonidy</strong>
+                    <span>Mozaika na COVERU je plná naprostého chaosu:</span><br><br>
+                    <span>Celá plocha plakátu pod ikonickým nápisem Grand Theft Auto VI (s legendární fialovou šestkou) žije vlastním životem v sérii divokých okének.</span><br><br>
+                    <strong>Ikony z ulice i divočiny:</strong> <span>Vidíme tu ústřední dvojici Jasona a Lucii v plné polní, šílenou jízdu po zadním kole na motorce, aligátora, který si dává víc než jen šlofíka, luxusní nadupaná auta, zběsilé přestřelky i ikonický vrtulník křižující oblohu nad městem.</span><br><br>
+                    <span>A pak tu máme MAPU GTA 6, která má stylový design, na který je vidět malý kousek mapy ještě před vydáním hry!</span>
+                </div>
+            </div>
+
+            <!-- Content Row 15 (Physical Game Copy) -->
+            <div class="content-row">
+                <div class="content-img">
+                    <img src="https://i.postimg.cc/cH3QPCFM/GTA-6-Collection-edice-fans-(fizicka-kopie-hry).jpg" alt="GTA 6 Fan Collector's Edition Physical Copy">
+                </div>
+                <div class="content-text" data-key="physical">
+                    <strong>FYZICKÁ KOPIE HRY GTA 6</strong>
+                    <span>Dámy a pánové, držte si klobouky a vyndejte kapesníky, protože tohle je pohled, ze kterého v sídle Rockstar Games pravděpodobně dostávají záchvaty úzkosti. Představujeme vám mýtický úkaz, který se v roce 2026 stal vzácnějším než jednorožec: GTA VI, které si můžete skutečně osahat a které vám nezmizí z knihovny, až se nějaký korporátní manažer špatně vyspí! Zatímco Rockstar vás nutí platit nekřesťanské peníze za „sběratelské edice“, které obsahují jen prázdné předměty bez duše a předražené kusy plastu, tak tito fanoušci hry se naštvali a ukázali, jak má vypadat opravdová sběratelská edice pro skutečné hráče.</span><br><br>
+                    <ul>
+                        <li><strong class="inline-bold">💿 TA TAJEMNÁ KULATÁ VĚC (Ano, je to DISK!):</strong> <span>Podívejte se dovnitř na pravou stranu té nádherné modré PS5 krabičky. Vidíte ten kulatý, lesklý zázrak? To není přelud ani tácek pod pivo, to je skutečný fyzický herní disk s GTA VI! Žádné stahování 150 GB dat přes přetížené servery při launchi, prostě ho tam vrazíte a hrajete. Technologie z minulosti, která Rockstaru zřejmě připadá jako mimozemská magie!</span></li>
+                        <li><strong class="inline-bold">📖 SKUTEČNÝ MANUÁL A MAPA!:</strong> <span>Na levé straně trůní tlustý, voňavý papírový průvodce „Leonida Travel Guide & Manual“. Pamatujete si ještě, když měly hry duši a vy jste si mohli při cestě ze školy listovat manuálem a studovat herní mechaniky hry? Fanoušci pamatují. Rockstar už zřejmě jenom počítá mikrotransakce v GTA Online.</span></li>
+                        <li><strong class="inline-bold">🎟️ DIGITÁLNÍ BONUSY? SAMOZŘEJMĚ!:</strong> <span>Nechybí ani luxusní leták na Grand Theft Auto VI: Ultimate Edition s bonusovým kódem. Rozdíl je v tom, že tady je ten kód bonusem k disku, ne jeho ubohou náhradou! Tohle je ukázka toho, že když herní giganti zapomenou na své kořeny a začnou prodávat vzduch zabalený v krabici. Rockstare, zapište si to za uši, nebo vám příště budeme muset poslat návod, jak se vyrábí CD! 💀💿</span></li>
+                        <li><strong class="inline-bold">🤬🖕 DRZÝ VZKAZ NA ROZLOUČENOU:</strong> <span>Celou tuhle nádheru korunuje naprosto nekompromisní samolepka: „SKUTEČNÁ FYZICKÁ EDICE! (ANO, OPRAVDU JE UVNITŘ DISK) – FAN-MADE EDITION, PROTOŽE ROCKSTAR TO NEUMÍ“.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Perfectly Aligned Side-by-Side Comparison Container -->
+            <div class="comparison-container">
+                
+                <!-- Sticky Headers -->
+                <div class="comparison-header-row">
+                    <div class="edition-original-title" data-key="compOrig">SBĚRATELSKÁ EDICE ORIGINÁL</div>
+                    <div class="edition-fans-title" data-key="compFans">SBĚRATELSKÁ EDICE FANOUŠKOVSKÁ</div>
+                </div>
+
+                <!-- Row 1: Box Closed -->
+                <div class="comp-row">
+                    <div class="comp-card original-card">
+                        <img src="https://i.postimg.cc/9XrJNr7T/GTA-6-Collection-edice-original-(box-zavreny).png" alt="Original Box Closed">
+                    </div>
+                    <div class="comp-card fans-card">
+                        <img src="https://i.postimg.cc/DZ4sycxr/GTA-6-Collection-edice-fans-(zavreny-box).jpg" alt="Fans Box Closed">
+                    </div>
+                </div>
+
+                <!-- Row 2: Box Opened -->
+                <div class="comp-row">
+                    <div class="comp-card original-card">
+                        <img src="https://i.postimg.cc/wxZ0KgXC/GTA-6-Collection-edice-original-(box-otevreny).png" alt="Original Box Opened">
+                    </div>
+                    <div class="comp-card fans-card">
+                        <img src="https://i.postimg.cc/HkS7wNKm/GTA-6-Collection-edice-fans-(otevreny-box).jpg" alt="Fans Box Opened">
+                    </div>
+                </div>
+
+                <!-- Row 3: Figurine / Statue -->
+                <div class="comp-row">
+                    <div class="comp-card original-card">
+                        <img src="https://i.postimg.cc/7YzXwdX6/GTA-6-Collection-edice-original-(figurka-aligatora).png" alt="Original Alligator Figurine">
+                    </div>
+                    <div class="comp-card fans-card">
+                        <img src="https://i.postimg.cc/3wXQ5MTC/GTA-6-Collection-edice-fans-(figurka-Jason-a-Lucie).jpg" alt="Fans Statue">
+                    </div>
+                </div>
+
+                <!-- Row 4: Glasses -->
+                <div class="comp-row">
+                    <div class="comp-card original-card">
+                        <img src="https://i.postimg.cc/nht2z2wv/GTA-6-Collection-edice-original-(bryle).png" alt="Original Glasses">
+                    </div>
+                    <div class="comp-card fans-card">
+                        <img src="https://i.postimg.cc/wjBkYDY1/GTA-6-Collection-edice-fans-(bryle).jpg" alt="Fans Glasses">
+                    </div>
+                </div>
+
+                <!-- Row 5: Bag / Shirt -->
+                <div class="comp-row">
+                    <div class="comp-card original-card">
+                        <img src="https://i.postimg.cc/L8BTZPrC/GTA-6-Collection-edice-original-(ledvinka-pres-rameno).png" alt="Original Crossbody Bag">
+                    </div>
+                    <div class="comp-card fans-card">
+                        <img src="https://i.postimg.cc/pVGfYpFX/GTA-6-Collection-edice-fans-(kosile-tommy-vercetti).jpg" alt="Fans Shirt">
+                    </div>
+                </div>
+
+                <!-- Row 6: Cap -->
+                <div class="comp-row">
+                    <div class="comp-card original-card">
+                        <img src="https://i.postimg.cc/xdfPGCQf/GTA-6-Collection-edice-original-(ksiltovka).png" alt="Original Cap">
+                    </div>
+                    <div class="comp-card fans-card">
+                        <img src="https://i.postimg.cc/bwNZvjgQ/GTA-6-Collection-edice-fans-(ksiltovka).jpg" alt="Fans Cap">
+                    </div>
+                </div>
+
+                <!-- Row 7: Mirror / Vinyl Album -->
+                <div class="comp-row">
+                    <div class="comp-card original-card">
+                        <img src="https://i.postimg.cc/9fLYLhXF/GTA-6-Collection-edice-original-(magneticke-zrcadlo).png" alt="Original Magnetic Mirror">
+                    </div>
+                    <div class="comp-card fans-card">
+                        <img src="https://i.postimg.cc/YqS4rHb0/GTA-6-Collection-edice-fans-(vinylove-album).jpg" alt="Fans Vinyl Album">
+                    </div>
+                </div>
+
+                <!-- Row 8: Shot Glass / Cocktail Glass -->
+                <div class="comp-row">
+                    <div class="comp-card original-card">
+                        <img src="https://i.postimg.cc/sX198NvF/GTA-6-Collection-edice-original-(panakova-sklenicka).png" alt="Original Shot Glass">
+                    </div>
+                    <div class="comp-card fans-card">
+                        <img src="https://i.postimg.cc/wjpD9Pyw/GTA-6-Collection-edice-fans-(koktejlova-sklenice).jpg" alt="Fans Cocktail Glass">
+                    </div>
+                </div>
+
+                <!-- Row 9: Cocktail Spoon -->
+                <div class="comp-row">
+                    <div class="comp-card original-card">
+                        <img src="https://i.postimg.cc/1tTcZrqX/GTA-6-Collection-edice-original-(koktejlova-lzicka).png" alt="Original Cocktail Spoon">
+                    </div>
+                    <div class="comp-card fans-card">
+                        <img src="https://i.postimg.cc/0QRzCKYd/GTA-6-Collection-edice-fans-(koktejlova-lzicka).jpg" alt="Fans Cocktail Spoon">
+                    </div>
+                </div>
+
+                <!-- Row 10: Keychain / PS5 Controller -->
+                <div class="comp-row">
+                    <div class="comp-card original-card">
+                        <img src="https://i.postimg.cc/PfpQQ9gb/GTA-6-Collection-edice-original-(klicenka).png" alt="Original Keychain">
+                    </div>
+                    <div class="comp-card fans-card">
+                        <img src="https://i.postimg.cc/4NBwFsF6/GTA-6-Collection-edice-fans-(playstation-5-ovladac).jpg" alt="Fans PS5 Controller">
+                    </div>
+                </div>
+
+                <!-- Row 11: Pin Set -->
+                <div class="comp-row">
+                    <div class="comp-card original-card">
+                        <img src="https://i.postimg.cc/nz67WVy1/GTA-6-Collection-edice-original-(pinovy-set).png" alt="Original Pin Set">
+                    </div>
+                    <div class="comp-card fans-card">
+                        <img src="https://i.postimg.cc/rygY71DY/GTA-6-Collection-edice-fans-(pinovy-set).jpg" alt="Fans Pin Set">
+                    </div>
+                </div>
+
+                <!-- Row 12: Stickers / Magazine -->
+                <div class="comp-row">
+                    <div class="comp-card original-card">
+                        <img src="https://i.postimg.cc/Ls516ZRv/GTA-6-Collection-edice-original-(nalepky).png" alt="Original Stickers">
+                    </div>
+                    <div class="comp-card fans-card">
+                        <img src="https://i.postimg.cc/sfcD8N9R/GTA-6-Collection-edice-fans-(magazine-gta-6).jpg" alt="Fans Magazine">
+                    </div>
+                </div>
+
+                <!-- Row 13: Map Poster -->
+                <div class="comp-row">
+                    <div class="comp-card original-card">
+                        <img src="https://i.postimg.cc/MKYM7Ypm/GTA-6-Collection-edice-original-(plakat-s-mapou-Leonidy).png" alt="Original Map Poster">
+                    </div>
+                    <div class="comp-card fans-card">
+                        <img src="https://i.postimg.cc/7hgBszJm/GTA-6-Collection-edice-fans-(plakat-s-mapou-Leonidy).jpg" alt="Fans Map Poster">
+                    </div>
+                </div>
+
+                <!-- Row 14: Controller Stand -->
+                <div class="comp-row">
+                    <div class="comp-card original-card">
+                        <!-- Prázdné pole - originál nemá žádný stojan -->
+                    </div>
+                    <div class="comp-card fans-card">
+                        <img src="https://i.postimg.cc/X7Km57ky/GTA-6-Collection-edice-fans-(stojan-na-ovladac).jpg" alt="Fans Controller Stand">
+                    </div>
+                </div>
+
+                <!-- Row 15: Physical Game Copy -->
+                <div class="comp-row">
+                    <div class="comp-card original-card">
+                        <!-- Prázdné pole - originál nemá hru -->
+                    </div>
+                    <div class="comp-card fans-card">
+                        <img src="https://i.postimg.cc/cH3QPCFM/GTA-6-Collection-edice-fans-(fizicka-kopie-hry).jpg" alt="Fans Physical Copy">
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="btn-back" id="backBtn" onclick="showHome()" data-key="backBtn">Zpět</button>
+        </div>
+    </div>
+
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+        <button class="lang-btn" onclick="setLanguage('en')">ENG</button>
+        <button class="lang-btn active" onclick="setLanguage('cz')">CZ</button>
+        <button class="lang-btn" onclick="setLanguage('es')">SPA</button>
+    </div>
+
+    <!-- Red Project Warning -->
+    <div class="project-warning" data-key="warning">
+        TENTO PROJEKT SLOUŽÍ POUZE JAKO NÁZORNÝ PŘÍKLAD A UKÁZKA TOHO, JAK MĚLA VYPADAT SKUTEČNÁ OFICIÁLNÍ SBĚRATELSKÁ EDICE OD ROCKSTAR GAMES. JDE O NEOFICIÁLNÍ FANOUŠKOVSKÝ KONCEPT, KTERÝ SE NEDÁ NIKDE KOUPIT!!! WEBOVÁ STRÁNKA BYLA VYTVOŘENA AI GEMINI KONKRÉTNĚ GRAFICKÝ DESIGN A PROGRAMOVÁNÍ WEBOVÉ STRÁNKY, ZBYTEK WEBOVÉ STRÁNKY BYL VYTVOŘEN LIDSKOU RUKOU. TO JE VŠE, DĚKUJI ZA VAŠÍ POZORNOST.
+    </div>
+
+    <script>
+        const translations = {
+            cz: {
+                mainTitle: `Grand Theft Auto VI:<br>The Goodtime State`,
+                mainSubtitle: `Vice City Collection`,
+                editionBadge: `EDICE FANOUŠKOVSKÁ`,
+                previewBtn: `NÁHLED FANOUŠKOVSKÉ EDICE`,
+                detailTitle: `<span>Grand Theft Auto VI: The Goodtime State – Vice City Collection</span> <span>EDICE FANOUŠKOVSKÁ</span>`,
+                detailIntro: `🔥 GTA VI The Goodtime State – Vice City Collection (UNOFFICIAL FAN EDITION)<br><br>
+                Když Rockstar selže, fanoušci si musí vzít sběratelskou edici do vlastních rukou!<br><br>
+                Slyšeli jste to ticho po oznámení oficiálního 400dolarového boxu od Rockstaru? To byl jen zvuk padajících nadějí milionů fanoušků. Dát devět tisíc korun za plastového aligátora, zrcátko a ledvinku přes rameno bez samotné hry? Díky, ale ne.<br><br>
+                Ukazujeme Rockstaru, jak má vypadat POCTIVÁ sběratelská edice, za kterou by každý hráč bez váhání utratil své úspory. Žádný předražený marketingový odpad – jen čistá vášeň, reálná užitná hodnota a neskutečný styl Vice City!`,
+                footerTitle: `SBĚRATELSKÁ EDICE OD FANOUŠKŮ`,
+                boxClosed: `<strong>SBĚRATELSKÝ BOX ZAVŘENÝ</strong>
+                    <span>Dámy a pánové, připoutejte se. Před vámi neleží obyčejná krabice. Tohle je Grand Theft Auto VI: The Goodtime State – Vice City Collection – svatý grál všech vyvrhelů, svatyně hříchu a lístek do kriminálního pekla s neonovým pozlátkem! Pojďme se podívat, co se skrývá pod tímhle zapečetěným víkem, které doslova pulzuje sluncem pláží a zkorumpovaných policejních majáků.</span>`,
+                boxOpened: `<strong>SBĚRATELSKÝ BOX OTEVŘENÝ</strong>
+                    <span>Otevřela se Pandořina skříňka a voní po kokosu, neonu a po střelném prachu! Ne, tohle není jen sběratelská krabice, to je oltář pro vaše nejtemnější a nejluxusnější kriminální touhy. Když odklopíte to černé monstrózní víko, uvidíte grafiku, co připomíná billboard pro Město neřesti. Obří sprejovaný nápis Greetings from Vice City na vás řve v retro-graffiti stylu. Stupňovitým designem vnitřek připomíná schody k absolutní kriminální moci, kde schováváte svoje nelegální hračky.</span>`,
+                statue: `<strong>Soška JASON a LUCIE (30 cm)</strong>
+                    <span>Skutečný středobod celé kolekce, na který oficiální verze „pro jistotu“ úplně zapomněla. Detailní pár hrdinů připravených dobýt Leonidu na stojánku s neonovým logem VICE CITY, kde LUCIE drží záhadný kufřík od krve. Co je v kufříku? Diamanty? Možná tajné dokumenty od Rockstaru? Možná drogy? To nikdo neví, jenom Jason a Lucie.</span>`,
+                glasses: `<strong>Sluneční brýle OAKLEY Wayfarer</strong>
+                    <span>Tvar brýlí je Wayfarer, klasika, ale s takovou aurou moci, že by i James Bond vypadal vedle nich jako nudný úředník. A ty čočky! Zrcadlová tyrkysová! To není jen barva, to je výkřik. Jsou to oči hada, který vidí jen kořist. Odráží svět tak, že vypadá jako v roce 1986, i když je rok 2026.<br><br>Ale to není vše! Z boku, na postranici, nápis OAKLEY křičí v té samé neonově růžové barvě, která existuje jen ve 3 hodiny ráno v nočním klubu. Když si tyhle brýle nasadíte, transformace je okamžitá a nevratná. Vaše oči už nevidí. Ony zrcadlí. Získáte okamžitou znalost toho, jak pilotovat hydroplán pod mostem. Víte, jak míchat dokonalé mojito. Cítíte nutkání nosit hedvábná saka a zlaté řetězy. A co je nejdůležitější, policejní majáčky se stanou jen dalším estetickým prvkem ve vaší neonové realitě.<br><br>Jsou to brýle pro ty, kteří se nebojí tmy... i když je venku jasno. Jsou to OAKLEY, a přicházejí s <span class="warning-red">VAROVÁNÍM</span>: nošení může způsobit vážnou touhu po moci a diskotékách.</span>`,
+                shirt: `<strong>Havajská košile Tommyho Vercettiho</strong>
+                    <span>Dámy a pánové, pohleďte. Tohle není obyčejný kus textilu z výprodeje v nákupním centru. Tohle je posvátná kriminální monarchie. Legendární havajská košile samotného Tommyho Vercettiho! Podívejte se na tu barvu! Elektrizující, nekompromisní tyrkysová modř a elegantní siluety palem – tichá připomínka toho, že pod tímto tropickým rájem leží nebezpečná džungle, kde přežívají jen ti nejrychlejší a nejdrzejší.<br><br>Tato košile má své vlastní nepsané zákony:</span>
+                    <ul>
+                        <li><strong class="inline-bold">Pravidlo tří knoflíků:</strong> <span>Rozepnout minimálně do poloviny hrudníku! Pokud není vidět zlatý řetěz a hrudník vystavený tropickému vánku, nosíte ji absolutně špatně.</span></li>
+                        <li><strong class="inline-bold">Rukávy v pohotovosti:</strong> <span>Tyhle krátké rukávy tu nejsou pro pohodlí. Jsou navrženy tak, aby vám nic nebránilo v divoké střelbě z okna kradeného Ferrari, zatímco vám v patách visí půlka policejního sboru Vice City.</span></li>
+                        <li><strong class="inline-bold">Materiál stvořený pro chaos:</strong> <span>Látka je tak lehká, že v ní přežijete i vražedné floridské horko, ale zároveň dostatečně odolná, aby z ní šly snadno vyprat skvrny od rozlité Piña Colady... nebo něčeho ještě nebezpečnějšího.</span></li>
+                    </ul>
+                    <strong class="inline-bold">Efekt po obléknutí:</strong> <span>Jakmile si ji obléknete, vaší DNA projde okamžitá transformace. Váš postoj ztvrdne, váš hlas klesne o dvě oktávy, v kapse se vám zničehonic objeví klíčky od červeného kabrioletu a na tváři se usadí výraz člověka, který právě koupil půlku města a druhou půlku přinutil platit za ochranu.</span><br><br>
+                    <span>To není jen oblečení. To je brnění krále podsvětí. Nosíte ho s vědomím, že slunce ve Vice City nikdy nezapadá bez pořádné dávky dramatu!</span>`,
+                cap: `<strong>Kšiltovka: Model "Vice City Leonida: Party-Aligátor"</strong>
+                    <span>Svatý grál neonové kriminální říše! Růžový aligátor. V džínsové bundě. Ve slunečních brýlích. A s červeným koktejlem! Pije, zatímco svět kolem něj se noří do chaosu. Nad ním nápis VICE CITY... nápis tak ikonický, že by mohl být vytesán do kamene na pláži Ocean Beach. A pod ním Leonida... název státu, který se stane vaším osobním hřištěm. Neony a pláže, zločin a koktejly – to vše je zapsáno do tohoto jediného grafického celku.<br><br>A ten kšilt! Růžový! Jako barva, kterou si musíte dát na oči, abyste viděli, že svět je hezčí. A na něm? Sbírka „medailí“ za kriminální zásluhy! Slunce v brýlích? Protože i slunce ve Vice City musí mít styl. A pak bílé nenápadné letadlo... co asi převáží? Hmm. Ikonická značka GTA VI. A na boku? Ten tichý, růžový, vražedný nápis 'R★'.<br><br>Nosit tuto kšiltovku není volba, je to poslání. Volá vás, abyste si vyhrnuli rukávy na saku, zapnuli diskotékovou hudbu a vyjeli vstříc západu slunce... v kradeném sporťáku. Tohle je vaše nová koruna!</span>`,
+                vinyl: `<strong>VINYLOVÉ ALBUM "Grand Theft Auto VI"</strong>
+                    <span>Tohle je vinylové album, co pálí zorničky!<br><br></span>
+                    <strong class="inline-bold">Plocha obalu (Gatefold):</strong> <span>Bleskový neonový nápis VI: The Album vyřezaný přímo do fialové noci s palmami! A co je vedle? Aligátor pohodlně usazený v nafukovacím kruhu přímo v obřím martini skle! Je to šílené? Ano! Je to stylové? Absolutně! Je to přesně to, co od Vice City chceme.</span><br><br>
+                    <strong class="inline-bold">Vnitřní artový památník:</strong> <span>V rozkládacím obalu nás čeká nádherná atmosféra s našimi hrdiny u postříleného červeného auta při západu slunce. A vedle toho samostatný art print s metalicky růžovým nafukovacím plameňákem ve slunečních brýlích! Detail, styl, duše – věci, které přesně chceme.</span><br><br>
+                    <strong class="inline-bold">A teď to hlavní – TY VINYLY!:</strong> <span>Tady je máme: litý, abstraktní-stříkaný vinyl v kombinaci elektrizující fialové, růžové a nebezpečné modré! Tyhle desky vypadají tak zatraceně dobře, že je ani nechcete položit na gramofon, ale rovnou si je přimontovat na zeď jako umělecký artefakt. Tohle není jen vinyl, tohle je umělecké dílo!</span>`,
+                glass: `<strong>Koktejlová sklenice 'Vice City: Leonida'</strong>
+                    <span>Představujeme vám naši fanouškovskou edici koktejlové sklenice, která je vizuálním útokem na vaše korporátní oči. Zapomeňte na sterilní čistotu a obyčejné panákovky – tohle je sklo, které má duši.<br><br>Srdcem tohoto mistrovského díla je skutečný král Neonového Pobřeží: neonově růžový aligátor. Je to symbol divoké energie a nezdolného ducha. Naše logo „Vice City: Leonida“ je vytesáno s větším odhodláním než jakýkoli korporátní asset.<br><br>A podívejte se na ten gradient! Plynulý přechod od elektricky růžové po hlubokou, oceánskou fialovou. To není jen barva – to je životní styl, který prostě nedokážete zachytit. Naše fialová nožka je elegantnější, naše růžová jasnější a naše modrá zářivější než cokoli, co by kdy mohl někdo velkovýrobně vytvořit.<br><br>A ten deštníček? To není jen dekorace; je to tyrkysově modré prohlášení, které křičí: <em>„My máme styl, který vám chybí.“</em> Vše navrženo tak, abychom si drink po úspěšné loupeži vychutnali se vším všudy.</span>`,
+                spoon: `<strong>Barová lžička 'Vice City Reborn'</strong>
+                    <span>Tohle je Vice City znovuzrozené a vylepšené. Naše barová lžička, vytesaná z ryzího, tekutého neonového stříbra, není jen kovový prut; je to kroucená DNA rebelie, která vede ruku skutečného míchacího mistra.<br><br>Vzali jsme tu obyčejnou lžičku od Rockstaru a vdechli jí skutečný život Vice City. Každý detail křičí luxusem, nebezpečím a stylem 80. let. Tohle není nástroj na míchání drinků, to je zbraň hromadného svádění, kterou držíš v ruce. Zmrzlinový pohár nebo drahý koktejl? S tímhle kouskem je to úplně jedno, protože ty jsi král baru.<br><br>Zapomeň na nudu, tohle je čistý, nefalšovaný adrenalin v drahém kovu. A uprostřed lžičky? Ikonický růžový stylový nápis <strong>VICE CITY</strong>. Oficiální originál vedle ní vypadá jako laciná hračka z pouti.</span>`,
+                controller: `<strong>Ovladač PlayStation 5: Grand Theft Auto VI Limited Edition</strong>
+                    <span>Tento ovladač není jen kus hardwaru, je to prodloužená ruka samotného města hříchu:<br><br></span>
+                    <ul>
+                        <li><strong class="inline-bold">Chameleoní kůže noci:</strong> <span>Tělo ovladače není jen plast. Je to metalický přechod, který se přelévá z elektrické, neonově modré uprostřed do hluboké, hříšné, noční fialové na rukojetích. Je to barva, kterou vidíte, když se řítíte po Ocean Drive ve 200 km/h a neonové nápisy klubů se slévají do jedné šmouhy.</span></li>
+                        <li><strong class="inline-bold">Vryto do DNA:</strong> <span>Černý horní kryt není prázdný. Je pokryt jemnými, agresivními rytinami palem a divokých vzorů, které do plastu vryla sama atmosféra Vice City. Cítíte tu strukturu? To je textura moci.</span></li>
+                        <li><strong class="inline-bold">Neonové srdce:</strong> <span>Tlačítka? Zapomeňte na šedé symboly. Tady žhnou neonově růžovou barvou, která pulzuje energií. D-pad, geometrické tvary i PS tlačítko uprostřed – všechno to září jako vstupní brána do pekla... nebo do ráje, záleží na tom, na které straně zákona stojíte.</span></li>
+                        <li><strong class="inline-bold">Touchpad s poselstvím:</strong> <span>A uprostřed, na matně černém touchpadu, se tyčí On. Čistý, elegantní, mírně vyražený znak „VI“ s palmami uvnitř.</span></li>
+                    </ul>`,
+                stand: `<strong>Stojan na ovladač</strong>
+                    <span>Zapomeňte na líný oficiální merch a pohleďte na to, jak se to dělá, když se do práce pustí opravdoví fanoušci, kterým už došla trpělivost s korporátní chamtivostí Rockstar Games! Tohle není jen tak nějaký držák. Toto je fanouškovská sběratelská edice stojanu na ovladač, která svým zpracováním, dravostí a detaily posílá předražené a odfláknuté nápady od Rockstaru přímo do propadliště dějin.</span><br><br>
+                    <ul>
+                        <li><strong class="inline-bold">Masivní, 3D svatyně „VI“ (která neničí vaše úspory):</strong> <span>Dominantou celého stojanu je obří, vrstvené 3D logo, kterému vládne kolosální římská číslice VI. Na rozdíl od Rockstaru, který by vám podstrčil jen samé nesmyslné laciné ozdoby, je tento monument udělán s neskutečným smyslem pro detail. Přechod barev na číslici – od sytě oranžové přes neonově růžovou až po azurově modrou – dokonale zachycuje atmosféru neony zalitého sluncem Vice City. Přes to všechno se drze a sebevědomě tyčí ikonický nápis Grand Theft Auto.</span></li>
+                        <li><strong class="inline-bold">Detaily, které Rockstaru chybí – Živé palmy:</strong> <span>Po stranách, těsně za místem, kde odpočívá ovladač, raší sytě zelené, detailně tvarované palmy, které stojanu dodávají ten správný floridský, gangsterský šmrnc. Fanoušci zkrátka vědí, že na detailech záleží.</span></li>
+                        <li><strong class="inline-bold">Šestihvězdičková základna pro elitní hráče:</strong> <span>Celá tahle nádhera stojí na robustním, matně černém podstavci, který bez problémů unese tíhu vašeho herního náčiní i nekonečného čekání na release. V jeho čele trůní absolutní klenot – ostře růžový štítek s nápisem WANTED GAMERTAG a šesti žlutými hvězdami hledanosti. Jak ikonické pro hru GTA! Stojan na ovladač není jen design, to je výzva! Na rozdíl od Rockstaru, který své fanoušky ignoruje, tenhle stojan na ovladač dává hrdě najevo, že vy jste v této hře ta hlavní hvězda.</span></li>
+                    </ul>`,
+                pins: `<strong>PINOVÝ SET</strong>
+                    <span>Sedm masivních, luxusních pinů, které jsou čistým uměním. Všechny ikonické prvky z krytu jsou zde zhmotněny do podoby, kterou si můžete připnout:<br><br></span>
+                    <ul>
+                        <li><strong class="inline-bold">Růžový aligátor:</strong> <span>Křižák Leonidy v havajské košili, který popíjí koktejl a dává jasně najevo, kdo je tu pánem (a kdo má nejlepší styl).</span></li>
+                        <li><strong class="inline-bold">Nejslunnější Slunce:</strong> <span>Nosí sluneční brýle a směje se vám do tváře, protože tady je léto 365 dní v roce.</span></li>
+                        <li><strong class="inline-bold">Ikonické letadlo:</strong> <span>Prolétá nad panoramatem města, symbolizuje neomezenou svobodu a shazuje zásoby bílého štěstí.</span></li>
+                        <li><strong class="inline-bold">Klasický Lowrider:</strong> <span>Fialový 'Impalas', který se líně prohání po ulicích.</span></li>
+                        <li><strong class="inline-bold">Full-body Retro-Dandy:</strong> <span>S potetovaným tělem, zlatým řetězem a modrým kloboukem, který je sám o sobě pop-artovou ikonou.</span></li>
+                        <li><strong class="inline-bold">Plameňák:</strong> <span>Který si stahuje brýle, aby viděl ty hezké plameňáčí samice.</span></li>
+                    </ul>`,
+                magazine: `<strong>Módní časopis 'New Idols – GTAVI'</strong>
+                    <span>Tohle není jen herní časopis. Tohle je čistý, neředěný luxus:<br><br></span>
+                    <ul>
+                        <li><strong class="inline-bold">Pár, který vládne ulicím i přehlídkovým molům:</strong> <span>Uprostřed trůní Lucia Caminos a Jason Duval. Jason v tmavé havajské košili se stříbrným řetízkem stojí pevně v pozadí a majetnicky objímá Lucii. A Lucia? Ta definuje styl. Bílý bezrukávový rolák, vínové kalhoty, temné sluneční brýle, zlaté doplňky. Vypadá jako šéfka kriminálního syndikátu, která si zrovna odskočila z titulky Vogue.</span></li>
+                        <li><strong class="inline-bold">Titulek, co mluví za vše:</strong> <span>Výstižný nápis „New Idols – GTAVI“ dává nekompromisně najevo, kdo jsou noví vládci popkultury.</span></li>
+                        <li><strong class="inline-bold">Kulisy hříšného ráje:</strong> <span>V pozadí dýchá noční Vice City v odstínech purpury a fialové, protkané siluetami palem a zářícími neony.</span></li>
+                        <li><strong class="inline-bold">Punc exkluzivity:</strong> <span>Spodní lišta našlapaná zvučnými jmény a značkami jako Comme des Garçons spolu s čárovým kódem dotváří iluzi, že držíte v rukou sběratelský časopis z nejluxusnějšího butiku v Miami.</span></li>
+                    </ul>`,
+                mapPoster: `<strong>Plakát s mapou Leonidy</strong>
+                    <span>Mozaika na COVERU je plná naprostého chaosu:</span><br><br>
+                    <span>Celá plocha plakátu pod ikonickým nápisem Grand Theft Auto VI (s legendární fialovou šestkou) žije vlastním životem v sérii divokých okének.</span><br><br>
+                    <strong>Ikony z ulice i divočiny:</strong> <span>Vidíme tu ústřední dvojici Jasona a Lucii v plné polní, šílenou jízdu po zadním kole na motorce, aligátora, který si dává víc než jen šlofíka, luxusní nadupaná auta, zběsilé přestřelky i ikonický vrtulník křižující oblohu nad městem.</span><br><br>
+                    <span>A pak tu máme MAPU GTA 6, která má stylový design, na který je vidět malý kousek mapy ještě před vydáním hry!</span>
+                `,
+                physical: `<strong>FYZICKÁ KOPIE HRY GTA 6</strong>
+                    <span>Dámy a pánové, držte si klobouky a vyndejte kapesníky, protože tohle je pohled, ze kterého v sídle Rockstar Games pravděpodobně dostávají záchvaty úzkosti. Představujeme vám mýtický úkaz, který se v roce 2026 stal vzácnějším než jednorožec: GTA VI, které si můžete skutečně osahat a které vám nezmizí z knihovny, až se nějaký korporátní manažer špatně vyspí! Zatímco Rockstar vás nutí platit nekřesťanské peníze za „sběratelské edice“, které obsahují jen prázdné předměty bez duše a předražené kusy plastu, tak tito fanoušci hry se naštvali a ukázali, jak má vypadat opravdová sběratelská edice pro skutečné hráče.</span><br><br>
+                    <ul>
+                        <li><strong class="inline-bold">💿 TA TAJEMNÁ KULATÁ VĚC (Ano, je to DISK!):</strong> <span>Podívejte se dovnitř na pravou stranu té nádherné modré PS5 krabičky. Vidíte ten kulatý, lesklý zázrak? To není přelud ani tácek pod pivo, to je skutečný fyzický herní disk s GTA VI! Žádné stahování 150 GB dat přes přetížené servery při launchi, prostě ho tam vrazíte a hrajete. Technologie z minulosti, která Rockstaru zřejmě připadá jako mimozemská magie!</span></li>
+                        <li><strong class="inline-bold">📖 SKUTEČNÝ MANUÁL A MAPA!:</strong> <span>Na levé straně trůní tlustý, voňavý papírový průvodce „Leonida Travel Guide & Manual“. Pamatujete si ještě, když měly hry duši a vy jste si mohli při cestě ze školy listovat manuálem a studovat herní mechaniky hry? Fanoušci pamatují. Rockstar už zřejmě jenom počítá mikrotransakce v GTA Online.</span></li>
+                        <li><strong class="inline-bold">🎟️ DIGITÁLNÍ BONUSY? SAMOZŘEJMĚ!:</strong> <span>Nechybí ani luxusní leták na Grand Theft Auto VI: Ultimate Edition s bonusovým kódem. Rozdíl je v tom, že tady je ten kód bonusem k disku, ne jeho ubohou náhradou! Tohle je ukázka toho, že když herní giganti zapomenou na své kořeny a začnou prodávat vzduch zabalený v krabici. Rockstare, zapište si to za uši, nebo vám příště budeme muset poslat návod, jak se vyrábí CD! 💀💿</span></li>
+                        <li><strong class="inline-bold">🤬🖕 DRZÝ VZKAZ NA ROZLOUČENOU:</strong> <span>Celou tuhle nádheru korunuje naprosto nekompromisní samolepka: „SKUTEČNÁ FYZICKÁ EDICE! (ANO, OPRAVDU JE UVNITŘ DISK) – FAN-MADE EDITION, PROTOŽE ROCKSTAR TO NEUMÍ“.</span></li>
+                    </ul>`,
+                compOrig: `SBĚRATELSKÁ EDICE ORIGINÁL`,
+                compFans: `SBĚRATELSKÁ EDICE FANOUŠKOVSKÁ`,
+                backBtn: `Zpět`,
+                warning: `TENTO PROJEKT SLOUŽÍ POUZE JAKO NÁZORNÝ PŘÍKLAD A UKÁZKA TOHO, JAK MĚLA VYPADAT SKUTEČNÁ OFICIÁLNÍ SBĚRATELSKÁ EDICE OD ROCKSTAR GAMES. JDE O NEOFICIÁLNÍ FANOUŠKOVSKÝ KONCEPT, KTERÝ SE NEDÁ NIKDE KOUPIT!!! WEBOVÁ STRÁNKA BYLA VYTVOŘENA AI GEMINI KONKRÉTNĚ GRAFICKÝ DESIGN A PROGRAMOVÁNÍ WEBOVÉ STRÁNKY, ZBYTEK WEBOVÉ STRÁNKY BYL VYTVOŘEN LIDSKOU RUKOU. TO JE VŠE, DĚKUJI ZA VAŠÍ POZORNOST.`
+            },
+            en: {
+                mainTitle: `Grand Theft Auto VI:<br>The Goodtime State`,
+                mainSubtitle: `Vice City Collection`,
+                editionBadge: `FAN EDITION`,
+                previewBtn: `FANS COLLECTORS EDITION PREVIEW`,
+                detailTitle: `<span>Grand Theft Auto VI: The Goodtime State – Vice City Collection</span> <span>FAN EDITION</span>`,
+                detailIntro: `🔥 GTA VI The Goodtime State – Vice City Collection (UNOFFICIAL FAN EDITION)<br><br>
+                When Rockstar fails, fans have to take the collector's edition into their own hands!<br><br>
+                Did you hear that silence after Rockstar announced their official $400 box? That was just the sound of millions of fans' hopes crashing down. Spending 400 bucks on a plastic alligator, a mirror, and a shoulder bag without the game itself? Thanks, but no thanks.<br><br>
+                We are showing Rockstar what an HONEST collector's edition should look like, one that every gamer would spend their savings on without hesitation. No overpriced marketing trash – just pure passion, real utility, and the unbelievable style of Vice City!`,
+                footerTitle: `FAN COLLECTOR'S EDITION`,
+                boxClosed: `<strong>COLLECTOR'S BOX CLOSED</strong>
+                    <span>Ladies and gentlemen, buckle up. Before you lies no ordinary box. This is Grand Theft Auto VI: The Goodtime State – Vice City Collection – the holy grail of all outcasts, a sanctuary of sin, and a ticket to the criminal underworld with neon glitter! Let's see what hides under this sealed lid, which literally pulses with the sun of the beaches and corrupt police sirens.</span>`,
+                boxOpened: `<strong>COLLECTOR'S BOX OPENED</strong>
+                    <span>Pandora's box has opened and it smells of coconut, neon, and gunpowder! No, this isn't just a collector's box, it's an altar for your darkest and most luxurious criminal desires. When you lift that massive black lid, you'll see graphics that resemble a billboard for the City of Vice. A giant sprayed 'Greetings from Vice City' sign screams at you in a retro-graffiti style. With a tiered design, the inside resembles stairs to absolute criminal power, where you hide your illegal toys.</span>`,
+                statue: `<strong>JASON and LUCIA Statue (30 cm)</strong>
+                    <span>The true centerpiece of the entire collection, which the official version 'just to be sure' completely forgot about. A detailed pair of heroes ready to conquer Leonida on a stand with a neon VICE CITY logo, where LUCIA holds a mysterious bloody briefcase. What's in the briefcase? Diamonds? Maybe secret documents from Rockstar? Maybe drugs? Nobody knows, just Jason and Lucia.</span>`,
+                glasses: `<strong>OAKLEY Wayfarer Sunglasses</strong>
+                    <span>The shape of the glasses is Wayfarer, a classic, but with such an aura of power that even James Bond would look like a boring clerk next to them. And those lenses! Mirrored turquoise! That's not just a color, it's a scream. They are the eyes of a snake that only sees prey. It reflects the world so it looks like 1986, even though it's 2026.<br><br>But that's not all! From the side, on the temple, the OAKLEY inscription screams in the same neon pink color that only exists at 3 AM in a nightclub. When you put these glasses on, the transformation is immediate and irreversible. Your eyes no longer see. They reflect. You gain instant knowledge of how to pilot a seaplane under a bridge. You know how to mix the perfect mojito. You feel the urge to wear silk jackets and gold chains. Most importantly, police sirens become just another aesthetic element in your neon reality.<br><br>These are glasses for those who aren't afraid of the dark... even when it's bright outside. They are OAKLEY, and they come with a <span class="warning-red">WARNING</span>: wearing them may cause a severe desire for power and discos.</span>`,
+                shirt: `<strong>Tommy Vercetti's Hawaiian Shirt</strong>
+                    <span>Ladies and gentlemen, behold. This is no ordinary piece of textile from a mall clearance sale. This is a sacred criminal monarchy. The legendary Hawaiian shirt of Tommy Vercetti himself! Look at that color! Electrifying, uncompromising turquoise blue and elegant palm silhouettes – a silent reminder that beneath this tropical paradise lies a dangerous jungle where only the fastest and most brazen survive.<br><br>This shirt has its own unwritten laws:</span>
+                    <ul>
+                        <li><strong class="inline-bold">The Three-Button Rule:</strong> <span>Unbuttoned at least halfway down the chest! If you can't see a gold chain and a chest exposed to the tropical breeze, you're wearing it absolutely wrong.</span></li>
+                        <li><strong class="inline-bold">Sleeves on Standby:</strong> <span>These short sleeves aren't here for comfort. They are designed so nothing stops you from wildly shooting out the window of a stolen Ferrari while half the Vice City police force is on your tail.</span></li>
+                        <li><strong class="inline-bold">Material Made for Chaos:</strong> <span>The fabric is so light you'll survive the killer Florida heat, yet durable enough to easily wash out stains from a spilled Piña Colada... or something even more dangerous.</span></li>
+                    </ul>
+                    <strong class="inline-bold">The Put-On Effect:</strong> <span>As soon as you put it on, your DNA undergoes an instant transformation. Your stance hardens, your voice drops two octaves, keys to a red convertible suddenly appear in your pocket, and your face settles into the expression of a man who just bought half the city and forced the other half to pay for protection.</span><br><br>
+                    <span>This isn't just clothing. It's the armor of the underworld king. You wear it knowing that the sun in Vice City never sets without a massive dose of drama!</span>`,
+                cap: `<strong>Cap: Model "Vice City Leonida: Party-Alligator"</strong>
+                    <span>The holy grail of the neon criminal empire! A pink alligator. In a denim jacket. Wearing sunglasses. And with a red cocktail! He drinks while the world around him plunges into chaos. Above him the inscription VICE CITY... an inscription so iconic it could be carved into stone on Ocean Beach. And below it Leonida... the name of the state that will become your personal playground. Neons and beaches, crime and cocktails – it's all written into this single graphic piece.<br><br>And that brim! Pink! Like the color you have to put on your eyes to see that the world is prettier. And on it? A collection of 'medals' for criminal merit! The sun wearing glasses? Because even the sun in Vice City must have style. And then a white, inconspicuous airplane... what might it be transporting? Hmm. The iconic GTA VI brand. And on the side? That quiet, pink, deadly inscription 'R★'.<br><br>Wearing this cap isn't a choice, it's a mission. It calls you to roll up your jacket sleeves, turn on some disco music, and drive into the sunset... in a stolen sports car. This is your new crown!</span>`,
+                vinyl: `<strong>VINYL ALBUM "Grand Theft Auto VI"</strong>
+                    <span>This is a vinyl album that burns the retinas!<br><br></span>
+                    <strong class="inline-bold">Gatefold cover:</strong> <span>A lightning-fast neon VI: The Album sign cut straight into a purple night with palm trees! And what's next to it? An alligator comfortably seated in an inflatable ring right inside a giant martini glass! Is it crazy? Yes! Is it stylish? Absolutely! It's exactly what we want from Vice City.</span><br><br>
+                    <strong class="inline-bold">Inside art memorial:</strong> <span>The gatefold cover treats us to a beautiful atmosphere with our heroes next to a bullet-riddled red car at sunset. And right next to it, an individual art print featuring a metallic pink inflatable flamingo wearing sunglasses! Detail, style, soul – the exact things we want.</span><br><br>
+                    <strong class="inline-bold">And now the main event – THE VINYLS!:</strong> <span>Here they are: poured, abstract-splatter vinyl in a combination of electrifying purple, pink, and dangerous blue! These records look so damn good you won't even want to put them on a turntable, but rather mount them straight on the wall as an art artifact. This isn't just vinyl; this is a work of art!</span>`,
+                glass: `<strong>Cocktail Glass 'Vice City: Leonida'</strong>
+                    <span>Introducing our fan edition cocktail glass, a visual assault on your corporate eyes. Forget sterile cleanliness and ordinary shot glasses – this is glass with a soul.<br><br>The heart of this masterpiece is the true king of the Neon Coast: a neon pink alligator. It's a symbol of wild energy and an indomitable spirit. Our 'Vice City: Leonida' logo is carved with more determination than any corporate asset.<br><br>And look at that gradient! A smooth transition from electric pink to deep, oceanic purple. That's not just a color – it's a lifestyle you simply can't capture. Our purple stem is more elegant, our pink brighter, and our blue more radiant than anything anyone could ever mass-produce.<br><br>And the little umbrella? It's not just decoration; it's a turquoise blue statement that screams: <em>'We have the style you lack.'</em> Everything designed so we can enjoy a drink after a successful heist to the fullest.</span>`,
+                spoon: `<strong>Bar Spoon 'Vice City Reborn'</strong>
+                    <span>This is Vice City reborn and upgraded. Our bar spoon, carved from pure, liquid neon silver, isn't just a metal rod; it's the twisted DNA of rebellion that guides the hand of a true mixing master.<br><br>We took that ordinary spoon from Rockstar and breathed real Vice City life into it. Every detail screams luxury, danger, and 80s style. This isn't a tool for mixing drinks, it's a weapon of mass seduction you hold in your hand. An ice cream sundae or an expensive cocktail? With this piece, it doesn't matter, because you're the king of the bar.<br><br>Forget boredom, this is pure, unadulterated adrenaline in precious metal. And in the middle of the spoon? The iconic pink stylish inscription <strong>VICE CITY</strong>. The official original looks like a cheap carnival toy next to it.</span>`,
+                controller: `<strong>PlayStation 5 Controller: Grand Theft Auto VI Limited Edition</strong>
+                    <span>This controller isn't just a piece of hardware, it's an extension of the city of sin itself:<br><br></span>
+                    <ul>
+                        <li><strong class="inline-bold">Chameleon Skin of the Night:</strong> <span>The controller's body isn't just plastic. It's a metallic gradient that flows from electric, neon blue in the center to a deep, sinful, midnight purple on the grips. It's the color you see when you're tearing down Ocean Drive at 200 km/h and the neon club signs blur into one streak.</span></li>
+                        <li><strong class="inline-bold">Engraved in its DNA:</strong> <span>The black top cover isn't empty. It's covered in subtle, aggressive engravings of palm trees and wild patterns etched into the plastic by the very atmosphere of Vice City. Do you feel that structure? That is the texture of power.</span></li>
+                        <li><strong class="inline-bold">Neon Heart:</strong> <span>The buttons? Forget grey symbols. Here, they glow with a neon pink color that pulses with energy. The D-pad, geometric shapes, and the PS button in the middle – all of it shines like a gateway to hell... or heaven, depending on which side of the law you stand on.</span></li>
+                        <li><strong class="inline-bold">Touchpad with a Message:</strong> <span>And in the center, on the matte black touchpad, stands The Symbol. A clean, elegant, slightly embossed "VI" emblem with palm trees inside.</span></li>
+                    </ul>`,
+                stand: `<strong>Controller Stand</strong>
+                    <span>Forget the lazy official merch and see how it's done when true fans, who have run out of patience with Rockstar Games' corporate greed, get to work! This isn't just any holder. This is a fan collector's edition controller stand that, with its craftsmanship, ferocity, and details, sends Rockstar's overpriced and sloppy ideas straight into the abyss of history.</span><br><br>
+                    <ul>
+                        <li><strong class="inline-bold">Massive, 3D "VI" shrine (that doesn't ruin your savings):</strong> <span>The dominant feature of the entire stand is a giant, layered 3D logo ruled by a colossal Roman numeral VI. Unlike Rockstar, who would just slip you some nonsensical cheap ornaments, this monument is made with an incredible sense of detail. The color transition on the numeral – from deep orange through neon pink to azure blue – perfectly captures the atmosphere of the neon-sun-drenched Vice City. Over all this, the iconic Grand Theft Auto sign stands boldly and confidently.</span></li>
+                        <li><strong class="inline-bold">Details that Rockstar lacks – Live palm trees:</strong> <span>On the sides, right behind where the controller rests, sprout deep green, intricately shaped palm trees that give the stand that authentic Floridian, gangster flair. Fans simply know that details matter.</span></li>
+                        <li><strong class="inline-bold">Six-star base for elite players:</strong> <span>All this beauty stands on a robust, matte black base that easily carries the weight of your gaming gear and the endless wait for the release. At its front reigns an absolute jewel – a bright pink plate with the inscription WANTED GAMERTAG and six yellow wanted stars. How iconic for the GTA game! A controller stand isn't just a design, it's a statement! Unlike Rockstar, which ignores its fans, this controller stand proudly shows that you are the main star in this game.</span></li>
+                    </ul>`,
+                pins: `<strong>PIN SET</strong>
+                    <span>Seven massive, luxurious pins that are pure art. All the iconic elements from the cover are materialized here into a form you can pin on:<br><br></span>
+                    <ul>
+                        <li><strong class="inline-bold">Pink Alligator:</strong> <span>The Leonida crusader in a Hawaiian shirt, sipping a cocktail and making it clear who's the boss (and who has the best style).</span></li>
+                        <li><strong class="inline-bold">The Sunniest Sun:</strong> <span>Wearing sunglasses and laughing in your face because it's summer here 365 days a year.</span></li>
+                        <li><strong class="inline-bold">Iconic Airplane:</strong> <span>Flying over the city skyline, symbolizing unlimited freedom and dropping supplies of white happiness.</span></li>
+                        <li><strong class="inline-bold">Classic Lowrider:</strong> <span>A purple 'Impala' lazily cruising the streets.</span></li>
+                        <li><strong class="inline-bold">Full-body Retro-Dandy:</strong> <span>Tattooed body, gold chain, and a blue hat, an absolute pop-art icon in itself.</span></li>
+                        <li><strong class="inline-bold">The Flamingo:</strong> <span>Pulling down his glasses to check out the pretty flamingo ladies.</span></li>
+                    </ul>`,
+                magazine: `<strong>Fashion Magazine 'New Idols – GTAVI'</strong>
+                    <span>This isn't just a gaming magazine. This is pure, unadulterated luxury:<br><br></span>
+                    <ul>
+                        <li><strong class="inline-bold">The couple that rules the streets and catwalks:</strong> <span>Lucia Caminos and Jason Duval reign in the center. Jason, in a dark Hawaiian shirt with a silver chain, stands firmly in the background, possessively embracing Lucia. And Lucia? She defines style. A white sleeveless turtleneck, burgundy trousers, dark sunglasses, gold accessories. She looks like a crime syndicate boss who just stepped off the cover of Vogue.</span></li>
+                        <li><strong class="inline-bold">A headline that says it all:</strong> <span>The striking inscription "New Idols – GTAVI" unapologetically declares who the new rulers of pop culture are.</span></li>
+                        <li><strong class="inline-bold">Backdrop of a sinful paradise:</strong> <span>In the background, nocturnal Vice City breathes in shades of crimson and purple, interwoven with palm silhouettes and glowing neons.</span></li>
+                        <li><strong class="inline-bold">The hallmark of exclusivity:</strong> <span>The bottom bar packed with big names and brands like Comme des Garçons, along with a barcode, completes the illusion that you're holding a collector's magazine from Miami's most luxurious boutique.</span></li>
+                    </ul>`,
+                mapPoster: `<strong>Leonida Map Poster</strong>
+                    <span>The COVER mosaic is pure chaos:</span><br><br>
+                    <span>The entire surface of the poster beneath the iconic Grand Theft Auto VI logo (with the legendary purple six) lives its own life in a series of wild windows.</span><br><br>
+                    <strong class="inline-bold">Icons of the street and the wild:</strong> <span>We see the central duo Jason and Lucia fully geared up, a crazy wheelie stunt on a motorcycle, an alligator taking more than just a nap, luxury souped-up cars, fierce gunfights, and an iconic helicopter crossing the sky above the city.</span><br><br>
+                    <span>And then we have the GTA 6 MAP featuring a stylish design that reveals a small piece of the map even before the game's release!</span>`,
+                physical: `<strong>PHYSICAL COPY OF GTA 6</strong>
+                    <span>Ladies and gentlemen, hold on to your hats and get your tissues ready, because this is a sight that probably causes anxiety attacks at Rockstar Games headquarters. Introducing a mythical phenomenon that became rarer than a unicorn in 2026: a GTA VI that you can actually touch, and that won't disappear from your library when some corporate manager wakes up on the wrong side of the bed! While Rockstar forces you to pay ungodly amounts of money for "collector's editions" that contain only empty, soulless items and overpriced pieces of plastic, these fans got mad and showed what a real collector's edition for true gamers should look like.</span><br><br>
+                    <ul>
+                        <li><strong class="inline-bold">💿 THAT MYSTERIOUS ROUND THING (Yes, it's a DISC!):</strong> <span>Look inside on the right side of that gorgeous blue PS5 box. You see that round, shiny miracle? That's no illusion or beer coaster; that is an actual physical game disc with GTA VI! No downloading 150 GB of data through overloaded servers at launch, you just pop it in and play. Technology from the past that Rockstar apparently thinks is alien magic!</span></li>
+                        <li><strong class="inline-bold">📖 A REAL MANUAL AND MAP!:</strong> <span>On the left side thrones a thick, fragrant paper guide "Leonida Travel Guide & Manual". Remember when games had a soul and you could flip through the manual on your way home from school and study the game mechanics? Fans remember. Rockstar apparently only counts microtransactions in GTA Online now.</span></li>
+                        <li><strong class="inline-bold">🎟️ DIGITAL BONUSES? OF COURSE!:</strong> <span>There's also a luxurious flyer for Grand Theft Auto VI: Ultimate Edition with a bonus code. The difference is that here the code is a bonus to the disc, not its pathetic replacement! This is a showcase that when gaming giants forget their roots and start selling air wrapped in a box... Rockstar, take notes, or next time we'll have to send you a tutorial on how CDs are made! 💀💿</span></li>
+                        <li><strong class="inline-bold">🤬🖕 CHEEKY GOODBYE MESSAGE:</strong> <span>This whole beauty is crowned by an absolutely uncompromising sticker: "REAL PHYSICAL EDITION! (YES, THERE REALLY IS A DISC INSIDE) – FAN-MADE EDITION, BECAUSE ROCKSTAR CAN'T DO IT".</span></li>
+                    </ul>`,
+                compOrig: `ORIGINAL COLLECTOR'S EDITION`,
+                compFans: `FAN COLLECTOR'S EDITION`,
+                backBtn: `Back`,
+                warning: `THIS PROJECT SERVES ONLY AS AN ILLUSTRATIVE EXAMPLE AND SHOWCASE OF WHAT THE ACTUAL OFFICIAL COLLECTOR'S EDITION FROM ROCKSTAR GAMES SHOULD HAVE LOOKED LIKE. IT IS AN UNOFFICIAL FAN CONCEPT THAT CANNOT BE BOUGHT ANYWHERE!!! THE WEBSITE WAS CREATED BY AI GEMINI, SPECIFICALLY THE GRAPHIC DESIGN AND PROGRAMMING OF THE WEBSITE, THE REST OF THE WEBSITE WAS CREATED BY HUMAN HANDS. THAT IS ALL, THANK YOU FOR YOUR ATTENTION.`
+            },
+            es: {
+                mainTitle: `Grand Theft Auto VI:<br>The Goodtime State`,
+                mainSubtitle: `Vice City Collection`,
+                editionBadge: `EDICIÓN DE FANS`,
+                previewBtn: `VISTA PREVIA EDICIÓN FANS`,
+                detailTitle: `<span>Grand Theft Auto VI: The Goodtime State – Vice City Collection</span> <span>EDICIÓN DE FANS</span>`,
+                detailIntro: `🔥 GTA VI The Goodtime State – Vice City Collection (EDICIÓN NO OFICIAL PARA FANS)<br><br>
+                ¡Cuando Rockstar falla, los fans tienen que tomar la edición de coleccionista en sus propias manos!<br><br>
+                ¿Escuchaste ese silencio después del anuncio de la caja oficial de 400 dólares de Rockstar? Ese fue solo el sonido de las esperanzas de millones de fans derrumbándose. ¿Gastar dinero en un caimán de plástico, un espejo y una riñonera sin el juego en sí? Gracias, pero no.<br><br>
+                Le mostramos a Rockstar cómo debería verse una edición de coleccionista HONESTA, por la que cualquier jugador gastaría sus ahorros sin dudarlo. ¡Sin basura de marketing sobrevalorada, solo pura pasión, valor de uso real y el increíble estilo de Vice City!`,
+                footerTitle: `EDICIÓN DE COLECCIONISTA DE FANS`,
+                boxClosed: `<strong>CAJA DE COLECCIONISTA CERRADA</strong>
+                    <span>Damas y caballeros, abróchense los cinturones. Ante ustedes no hay una caja ordinaria. Esto es Grand Theft Auto VI: The Goodtime State - Vice City Collection: ¡el santo grial de todos los marginados, un santuario del pecado y un boleto al inframundo criminal con brillo de neón! Veamos qué se esconde bajo esta tapa sellada, que literalmente palpita con el sol de las playas y las sirenas de la policía corrupta.</span>`,
+                boxOpened: `<strong>CAJA DE COLECCIONISTA ABIERTA</strong>
+                    <span>¡La caja de Pandora se ha abierto y huele a coco, neón y pólvora! No, no es solo una caja de coleccionista, es un altar para tus deseos criminales más oscuros y lujosos. Cuando levantes esa monstruosa tapa negra, verás gráficos que parecen un cartel publicitario de la Ciudad del Vicio. Un letrero gigante pintado con aerosol de 'Greetings from Vice City' te grita en un estilo retro-graffiti. Con un diseño escalonado, el interior se asemeja a las escaleras hacia el poder criminal absoluto, donde escondes tus juguetes ilegales.</span>`,
+                statue: `<strong>Estatua de JASON y LUCÍA (30 cm)</strong>
+                    <span>El verdadero centro de mesa de toda la colección, del que la versión oficial se olvidó por completo 'por si acaso'. Una pareja detallada de héroes listos para conquistar Leonida en un soporte con el logotipo de neón de VICE CITY, donde LUCÍA sostiene un misterioso maletín ensangrentado. ¿Qué hay en el maletín? ¿Diamantes? ¿Quizás documentos secretos de Rockstar? ¿Quizás drogas? Nadie lo sabe, solo Jason y Lucía.</span>`,
+                glasses: `<strong>Gafas de sol OAKLEY Wayfarer</strong>
+                    <span>La forma de las gafas es Wayfarer, un clásico, pero con un aura de poder tal que incluso James Bond parecería un aburrido oficinista a su lado. ¡Y esas lentes! ¡Turquesa espejado! No es solo un color, es un grito. Son los ojos de una serpiente que solo ve a su presa. Refleja el mundo para que parezca 1986, aunque sea 2026.<br><br>¡Pero eso no es todo! Desde el lado, en la patilla, la inscripción OAKLEY grita en ese mismo color rosa neón que solo existe a las 3 de la mañana en un club nocturno. Cuando te pones estas gafas, la transformación es inmediata e irreversible. Tus ojos ya no ven. Reflejan. Adquieres el conocimiento instantáneo de cómo pilotar un hidroavión por debajo de un puente. Sabes cómo preparar el mojito perfecto. Sientes el impulso de usar chaquetas de seda y cadenas de oro. Lo más importante, las sirenas de la policía se convierten en solo otro elemento estético en tu realidad de neón.<br><br>Son gafas para aquellos que no temen a la oscuridad... incluso cuando hay luz afuera. Son OAKLEY, y vienen con una <span class="warning-red">ADVERTENCIA</span>: usarlas puede causar un severo deseo de poder y discotecas.</span>`,
+                shirt: `<strong>Camisa Hawaiana de Tommy Vercetti</strong>
+                    <span>Damas y caballeros, contemplen. No se trata de un simple trozo de tela de unas rebajas de centro comercial. Es una sagrada monarquía criminal. ¡La legendaria camisa hawaiana del mismísimo Tommy Vercetti! ¡Miren ese color! Un azul turquesa electrizante e inflexible y elegantes siluetas de palmeras: un recordatorio silencioso de que bajo este paraíso tropical se esconde una peligrosa jungla en la que sólo sobreviven los más rápidos y descarados.<br><br>Esta camisa tiene sus propias leyes no escritas:</span>
+                    <ul>
+                        <li><strong class="inline-bold">La regla de los tres botones:</strong> <span>¡Desabrochada al menos hasta la mitad del pecho! Si no se ve una cadena de oro y el pecho expuesto a la brisa tropical, la llevas absolutamente mal.</span></li>
+                        <li><strong class="inline-bold">Mangas en alerta:</strong> <span>Estas mangas cortas no están aquí por comodidad. Están diseñadas para que nada te impida disparar salvajemente desde la ventanilla de un Ferrari robado mientras la mitad de la policía de Vice City te pisa los talones.</span></li>
+                        <li><strong class="inline-bold">Material creado para el caos:</strong> <span>La tela es tan ligera que sobrevivirás al asesino calor de Florida, pero lo suficientemente resistente como para lavar fácilmente las manchas de una Piña Colada derramada... o de algo aún más peligroso.</span></li>
+                    </ul>
+                    <strong class="inline-bold">El efecto al ponérsela:</strong> <span>En cuanto te la pasas por la cabeza, tu ADN sufre una transformación instantánea. Tu postura se endurece, tu voz baja dos octavas, de repente aparecen en tu bolsillo las llaves de un descapotable rojo y en tu cara se instala la expresión de un hombre que acaba de comprar la mitad de la ciudad y obligó a la otra mitad a pagar por protección.</span><br><br>
+                    <span>Esto no es solo ropa. Es la armadura del rey del inframundo. ¡La llevas sabiendo que el sol en Vice City nunca se pone sin una buena dosis de drama!</span>`,
+                cap: `<strong>Gorra: Modelo "Vice City Leonida: Party-Alligator"</strong>
+                    <span>¡El santo grial del imperio criminal de neón! Un caimán rosa. Con una chaqueta de mezclilla. Con gafas de sol. ¡Y con un cóctel rojo! Bebe mientras el mundo a su alrededor se sumerge en el caos. Sobre él la inscripción VICE CITY... una inscripción tan icónica que podría estar tallada en piedra en Ocean Beach. Y debajo, Leonida... el nombre del estado que se convertirá en tu patio de recreo personal. Neones y playas, crimen y cócteles: todo está plasmado en esta única pieza gráfica.<br><br>¡Y esa visera! ¡Rosa! Como el color que debes ponerte en los ojos para ver que el mundo es más hermoso. ¿Y sobre ella? ¡Una colección de 'medallas' por méritos criminales! ¿El sol con gafas? Porque incluso el sol en Vice City debe tener estilo. Y luego un avión blanco e inadvertido... ¿qué estará transportando? Mmm. La icónica marca de GTA VI. ¿Y en el lateral? Esa silenciosa, rosa y mortal inscripción 'R★'.<br><br>Usar esta gorra no es una opción, es una misión. Te llama a arremangarte la chaqueta, poner música disco y conducir hacia el atardecer... en un auto deportivo robado. ¡Esta es tu nueva corona!</span>`,
+                vinyl: `<strong>ÁLBUM DE VINILO "Grand Theft Auto VI"</strong>
+                    <span>¡Este es un álbum de vinilo que quema las retinas!<br><br></span>
+                    <strong class="inline-bold">Portada (Gatefold):</strong> <span>¡Un letrero de neón relampagueante VI: The Album cortado directamente en una noche púrpura con palmeras! ¿Y qué hay al lado? ¡Un caimán cómodamente sentado en un flotador dentro de una copa de martini gigante! ¿Es una locura? ¡Sí! ¿Tiene estilo? ¡Absolutamente! Es exactamente lo que queremos de Vice City.</span><br><br>
+                    <strong class="inline-bold">Memorial de arte interior:</strong> <span>La portada desplegable nos ofrece una hermosa atmósfera con nuestros héroes junto a un coche rojo acribillado a balazos al atardecer. ¡Y justo al lado, una lámina de arte independiente con un flamenco inflable rosa metálico con gafas de sol! Detalle, estilo, alma: exactamente lo que queremos.</span><br><br>
+                    <strong class="inline-bold">Y ahora el plato fuerte – ¡LOS VINILOS!:</strong> <span>Aquí los tenemos: ¡vinilo vertido con salpicaduras abstractas en una combinación de púrpura electrizante, rosa y azul peligroso! Estos discos se ven tan increíblemente bien que ni siquiera querrás ponerlos en un tocadiscos, sino montarlos directamente en la pared como un artefacto artístico. ¡Esto no es solo vinilo; es una obra de arte!</span>`,
+                glass: `<strong>Copa de cóctel 'Vice City: Leonida'</strong>
+                    <span>Te presentamos nuestra copa de cóctel edición fan, un asalto visual a tus ojos corporativos. Olvida la limpieza estéril y los vasos de chupito comunes: este es un cristal con alma.<br><br>El corazón de esta obra maestra es el verdadero rey de la Costa de Neón: un caimán rosa neón. Es un símbolo de energía salvaje y un espíritu indomable. Nuestro logo 'Vice City: Leonida' está tallado con más determinación que cualquier activo corporativo.<br><br>¡Y mira ese degradado! Una suave transición del rosa eléctrico al púrpura oceánico profundo. Eso no es solo un color, es un estilo de vida que simplemente no puedes capturar. Nuestro tallo púrpura es más elegante, nuestro rosa más brillante y nuestro azul más radiante que cualquier cosa que alguien pudiera producir en masa.<br><br>¿Y el paraguas? No es solo decoración; es una declaración azul turquesa que grita: <em>'Tenemos el estilo que te falta.'</em> Todo diseñado para que podamos disfrutar de una bebida después de un atraco exitoso con todos los lujos.</span>`,
+                spoon: `<strong>Cuchara de bar 'Vice City Reborn'</strong>
+                    <span>Este es Vice City renacido y mejorado. Nuestra cuchara de bar, tallada en pura plata líquida de neón, no es solo una varilla de metal; es el ADN retorcido de la rebelión que guía la mano de un verdadero maestro de la mezcla.<br><br>Tomamos esa cuchara ordinaria de Rockstar y le infundimos la verdadera vida de Vice City. Cada detalle grita lujo, peligro y estilo de los 80. Esta no es una herramienta para mezclar bebidas, es un arma de seducción masiva que tienes en la mano. ¿Una copa de helado o un cóctel caro? Con esta pieza da igual, porque eres el rey del bar.<br><br>Olvida el aburrimiento, esto es pura adrenalina sin adulterar en metal precioso. ¿Y en el medio de la cuchara? La icónica y elegante inscripción rosa <strong>VICE CITY</strong>. El original oficial parece un juguete barato de feria a su lado.</span>`,
+                controller: `<strong>Mando de PlayStation 5: Grand Theft Auto VI Limited Edition</strong>
+                    <span>Este mando no es sólo una pieza de hardware, es una extensión de la propia ciudad del pecado:<br><br></span>
+                    <ul>
+                        <li><strong class="inline-bold">Piel de Camaleón de la Noche:</strong> <span>El cuerpo del mando no es solo plástico. Es un degradado metálico que fluye desde un azul neón eléctrico en el centro hasta un púrpura de medianoche profundo y pecaminoso en los agarres. Es el color que ves cuando vas a toda velocidad por Ocean Drive a 200 km/h y los letreros de neón de los clubes se difuminan en una sola raya.</span></li>
+                        <li><strong class="inline-bold">Grabado en su ADN:</strong> <span>La cubierta superior negra no está vacía. Está cubierta de sutiles y agresivos grabados de palmeras y patrones salvajes esculpidos en el plástico por la propia atmósfera de Vice City. ¿Sientes esa estructura? Esa es la textura del poder.</span></li>
+                        <li><strong class="inline-bold">Corazón de Neón:</strong> <span>¿Los botones? Olvídate de los símbolos grises. Aquí brillan con un color rosa neón que pulsa con energía. El D-pad, las formas geométricas y el botón PS en el medio: todo brilla como una puerta de entrada al infierno... o al paraíso, dependiendo del lado de la ley en el que te encuentres.</span></li>
+                        <li><strong class="inline-bold">Touchpad con un Mensaje:</strong> <span>Y en el centro, sobre el touchpad negro mate, se erige El Símbolo. Un emblema "VI" limpio, elegante y ligeramente en relieve con palmeras en su interior.</span></li>
+                    </ul>`,
+                stand: `<strong>Soporte para mando</strong>
+                    <span>¡Olvídate del perezoso merchandising oficial y mira cómo se hace cuando los verdaderos fans, que ya han perdido la paciencia con la codicia corporativa de Rockstar Games, se ponen a trabajar! Este no es un soporte cualquiera. Esta es una edición de coleccionista de fans del soporte para mando que, con su artesanía, ferocidad y detalles, envía las ideas sobrevaloradas y descuidadas de Rockstar directamente al abismo de la historia.</span><br><br>
+                    <ul>
+                        <li><strong class="inline-bold">Santuario masivo 3D "VI" (que no arruina tus ahorros):</strong> <span>La característica dominante de todo el soporte es un logotipo 3D gigante en capas gobernado por un colosal número romano VI. A diferencia de Rockstar, que solo te pasaría algunos adornos baratos sin sentido, este monumento está hecho con un increíble sentido del detalle. La transición de color en el número (del naranja intenso al rosa neón y al azul celeste) captura a la perfección la atmósfera de Vice City bañada por el sol y el neón. Sobre todo esto, el icónico letrero de Grand Theft Auto se erige con audacia y confianza.</span></li>
+                        <li><strong class="inline-bold">Detalles que le faltan a Rockstar – Palmeras vivas:</strong> <span>A los lados, justo detrás de donde descansa el mando, brotan palmeras de color verde oscuro e intrincadas formas que le dan al soporte ese auténtico estilo gángster de Florida. Los fans simplemente saben que los detalles importan.</span></li>
+                        <li><strong class="inline-bold">Base de seis estrellas para jugadores de élite:</strong> <span>Toda esta belleza se apoya en una base robusta y negra mate que soporta fácilmente el peso de tu equipo de juego y la interminable espera del lanzamiento. En su frente reina una joya absoluta: una placa rosa brillante con la inscripción WANTED GAMERTAG y seis estrellas amarillas de búsqueda. ¡Qué icónico para el juego GTA! Un soporte de mando no es solo un diseño, ¡es una declaración! A diferencia de Rockstar, que ignora a sus fans, este soporte de mando muestra con orgullo que tú eres la estrella principal de este juego.</span></li>
+                    </ul>`,
+                pins: `<strong>CONJUNTO DE PINES</strong>
+                    <span>Siete pines masivos y de lujo que son puro arte. Todos los elementos icónicos de la portada se materializan aquí en una forma que te puedes prender:<br><br></span>
+                    <ul>
+                        <li><strong class="inline-bold">Caimán rosa:</strong> <span>El cruzado de Leonida con camisa hawaiana, bebiendo un cóctel y dejando claro quién manda (y quién tiene el mejor estilo).</span></li>
+                        <li><strong class="inline-bold">El Sol Más Soleado:</strong> <span>Lleva gafas de sol y se ríe en tu cara porque aquí es verano los 365 días del año.</span></li>
+                        <li><strong class="inline-bold">Avión icónico:</strong> <span>Volando sobre el horizonte de la ciudad, simbolizando la libertad ilimitada y lanzando suministros de felicidad blanca.</span></li>
+                        <li><strong class="inline-bold">Lowrider Clásico:</strong> <span>Un 'Impala' morado paseando perezosamente por las calles.</span></li>
+                        <li><strong class="inline-bold">Retro-Dandy de cuerpo entero:</strong> <span>Cuerpo tatuado y cadena de oro con sombrero azul que es todo un icono del arte pop en sí mismo.</span></li>
+                        <li><strong class="inline-bold">El Flamenco:</strong> <span>Bajándose las gafas para mirar a las guapas hembras flamenco.</span></li>
+                    </ul>`,
+                magazine: `<strong>Revista de moda 'New Idols – GTAVI'</strong>
+                    <span>No se trata de una simple revista de juegos. Es puro lujo sin adulterar:<br><br></span>
+                    <ul>
+                        <li><strong class="inline-bold">La pareja que domina las calles y las pasarelas:</strong> <span>Lucia Caminos y Jason Duval reinan en el centro. Jason, con una oscura camisa hawaiana y cadena de plata, se mantiene firme en un segundo plano, abrazando posesivamente a Lucia. ¿Y Lucia? Ella define el estilo. Un cuello alto blanco sin mangas, pantalones burdeos, gafas de sol oscuras, accesorios dorados. Parece la jefa de un sindicato del crimen que acaba de salir de la portada de Vogue.</span></li>
+                        <li><strong class="inline-bold">Un titular que lo dice todo:</strong> <span>La llamativa inscripción "New Idols – GTAVI" declara sin concesiones quiénes son los nuevos gobernantes de la cultura pop.</span></li>
+                        <li><strong class="inline-bold">El telón de fondo de un paraíso pecaminoso:</strong> <span>De fondo, la nocturna Vice City respira en tonos carmesí y púrpura, entrelazados con siluetas de palmeras y neones resplandecientes.</span></li>
+                        <li><strong class="inline-bold">El sello de exclusividad:</strong> <span>La barra inferior repleta de grandes nombres y marcas como Comme des Garçons, junto con un código de barras, completa la ilusión de tener entre manos una revista de coleccionista de la boutique más lujosa de Miami.</span></li>
+                    </ul>`,
+                mapPoster: `<strong>Póster con el mapa de Leonida</strong>
+                    <span>El mosaico de la PORTADA es puro caos:</span><br><br>
+                    <span>Toda la superficie del póster bajo el icónico título de Grand Theft Auto VI (con el legendario seis morado) cobra vida propia en una serie de ventanas salvajes.</span><br><br>
+                    <strong class="inline-bold">Iconos de la calle y la naturaleza salvaje:</strong> <span>Vemos a la pareja protagonista, Jason y Lucia, equipados para la acción, un loco caballito en moto, un caimán que se toma algo más que una siesta, coches de lujo tuneados, tiroteos salvajes y un helicóptero icónico cruzando el cielo de la ciudad.</span><br><br>
+                    <span>Y luego tenemos el MAPA DE GTA 6, con un diseño elegante que permite ver un pequeño fragmento del mapa ¡incluso antes del lanzamiento del juego!</span>`,
+                physical: `<strong>COPIA FÍSICA DEL JUEGO GTA 6</strong>
+                    <span>Damas y caballeros, agárrense los sombreros y preparen sus pañuelos, porque esta es una vista que probablemente cause ataques de ansiedad en la sede de Rockstar Games. Presentamos un fenómeno mítico que se volvió más raro que un unicornio en 2026: ¡un GTA VI que realmente puedes tocar y que no desaparecerá de tu biblioteca cuando algún gerente corporativo se levante con el pie izquierdo! Mientras Rockstar te obliga a pagar cantidades impías de dinero por "ediciones de coleccionista" que contienen solo artículos vacíos y sin alma y pedazos de plástico sobrevalorados, estos fans se enojaron y mostraron cómo debería ser una verdadera edición de coleccionista para jugadores verdaderos.</span><br><br>
+                    <ul>
+                        <li><strong class="inline-bold">💿 ESA MISTERIOSA COSA REDONDA (¡Sí, es un DISCO!):</strong> <span>Mira adentro en el lado derecho de esa hermosa caja azul de PS5. ¿Ves ese milagro redondo y brillante? No es una ilusión ni un posavasos, ¡es un disco de juego físico real con GTA VI! No hay que descargar 150 GB de datos a través de servidores sobrecargados en el lanzamiento, simplemente lo insertas y juegas. ¡Tecnología del pasado que Rockstar aparentemente piensa que es magia alienígena!</span></li>
+                        <li><strong class="inline-bold">📖 ¡UN MANUAL Y MAPA REALES!:</strong> <span>En el lado izquierdo reina una guía de papel gruesa y fragante "Leonida Travel Guide & Manual". ¿Recuerdas cuando los juegos tenían alma y podías hojear el manual de camino a casa desde la escuela y estudiar la mecánica del juego? Los fans lo recuerdan. Aparentemente, Rockstar ahora solo cuenta microtransacciones en GTA Online.</span></li>
+                        <li><strong class="inline-bold">🎟️ ¿BONOS DIGITALES? ¡POR SUPUESTO!:</strong> <span>También hay un lujoso folleto de Grand Theft Auto VI: Ultimate Edition con un código de bonificación. ¡La diferencia es que aquí el código es una bonificación para el disco, no su patético reemplazo! Esta es una muestra de que cuando los gigantes de los juegos olvidan sus raíces y comienzan a vender aire envuelto en una caja... Rockstar, toma nota, ¡o la próxima vez tendremos que enviarte un tutorial sobre cómo se fabrican los CD! 💀💿</span></li>
+                        <li><strong class="inline-bold">🤬🖕 MENSAJE DE DESPEDIDA DESCARADO:</strong> <span>Toda esta belleza está coronada por una pegatina absolutamente intransigente: "¡EDICIÓN FÍSICA REAL! (SÍ, REALMENTE HAY UN DISCO ADENTRO) – EDICIÓN HECHA POR FANS, PORQUE ROCKSTAR NO PUEDE HACERLO".</span></li>
+                    </ul>`,
+                compOrig: `EDICIÓN DE COLECCIONISTA ORIGINAL`,
+                compFans: `EDICIÓN DE COLECCIONISTA DE FANS`,
+                backBtn: `Volver`,
+                warning: `ESTE PROYECTO SIRVE SOLO COMO UN EJEMPLO ILUSTRATIVO Y DEMOSTRACIÓN DE CÓMO DEBERÍA HABER SIDO LA VERDADERA EDICIÓN DE COLECCIONISTA OFICIAL DE ROCKSTAR GAMES. ¡ES UN CONCEPTO DE FAN NO OFICIAL QUE NO SE PUEDE COMPRAR EN NINGÚN LADO! EL SITIO WEB FUE CREADO POR AI GEMINI, ESPECÍFICAMENTE EL DISEÑO GRÁFICO Y LA PROGRAMACIÓN DEL SITIO WEB, EL RESTO DEL SITIO WEB FUE CREADO POR MANOS HUMANAS. ESO ES TODO, GRACIAS POR SU ATENCIÓN.`
+            }
+        };
+
+        function setLanguage(lang) {
+            // Změna aktivního tlačítka
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.textContent.toLowerCase() === lang || (lang === 'en' && btn.textContent === 'ENG') || (lang === 'es' && btn.textContent === 'SPA') || (lang === 'cz' && btn.textContent === 'CZ')) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Samotný překlad podle data-key
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+        }
+
+        function showDetail() {
+            document.getElementById('homeView').style.display = 'none';
+            document.getElementById('detailView').style.display = 'block';
+            window.scrollTo(0, 0); 
+        }
+
+        function showHome() {
+            document.getElementById('detailView').style.display = 'none';
+            document.getElementById('homeView').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
